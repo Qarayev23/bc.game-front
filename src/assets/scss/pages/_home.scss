@@ -1,0 +1,315 @@
+.hero {
+    position: relative;
+    padding-bottom: rem(30);
+
+    &__bg {
+        background: linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0) 100%);
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0.3;
+        z-index: -2;
+    }
+
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        width: 55%;
+        flex-shrink: 0;
+        padding-top: rem(72);
+        position: relative;
+        z-index: 1;
+    }
+
+    &__title {
+        @include h-1;
+        color: white;
+        margin-bottom: rem(20);
+
+        span {
+            background: linear-gradient(90deg, #B5E916 0%, #43C111 70.73%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    }
+
+    &__text {
+        p {
+            color: $gray;
+            @include r-16;
+
+            b {
+                @include b-16;
+            }
+        }
+
+        .short-text {
+            display: none;
+        }
+    }
+
+    .text-toggle {
+        color: white;
+        @include r-14;
+        align-items: center;
+        gap: rem(10);
+        margin-top: rem(12);
+        display: none;
+
+        svg {
+            width: rem(14);
+            height: rem(6);
+            stroke: white;
+            transform: translateY(rem(2));
+            transition: 0.3s;
+        }
+
+        &.rotate {
+            svg {
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+    &-img {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: rem(1200);
+        z-index: -1;
+
+        &--mob {
+            display: none;
+        }
+
+        &--desktop {
+            display: block;
+        }
+    }
+
+    &__footer {
+        display: flex;
+        gap: rem(48);
+        margin-top: rem(32);
+
+        .partners {
+            display: flex;
+            gap: rem(32);
+
+            img {
+                height: rem(48);
+                object-fit: contain;
+                filter: grayscale(1);
+                cursor: pointer;
+                transition: 0.3s;
+
+                &:hover {
+                    filter: grayscale(0);
+                }
+            }
+        }
+    }
+
+    &__slide {
+        margin-top: rem(80);
+        position: relative;
+        border-radius: rem(8);
+
+        .swiper-slide {
+            border-radius: rem(8);
+
+            a {
+                width: 100%;
+            }
+
+            img {
+                width: 100%;
+                transition: 0.3s;
+
+                &:hover {
+                    filter: brightness(0.8);
+                }
+            }
+        }
+
+        .swiper-button-next {
+            right: rem(-52);
+        }
+
+        .swiper-button-prev {
+            left: rem(-52);
+        }
+
+        .swiper-pagination {
+            bottom: rem(-30) !important;
+        }
+    }
+
+    @include breakpoint-max(1300) {
+        &-img {
+            width: rem(991);
+        }
+    }
+
+    @include breakpoint-max($desktop-width) {
+        padding-bottom: rem(40);
+
+        &__title {
+            margin-bottom: rem(12);
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            top: initial;
+            bottom: rem(-55);
+        }
+
+        .swiper-button-next {
+            right: rem(0);
+        }
+
+        .swiper-button-prev {
+            left: 0;
+        }
+
+        .swiper-pagination {
+            bottom: rem(-40) !important;
+        }
+
+        &-img {
+            &--mob {
+                display: block;
+            }
+
+            &--desktop {
+                display: none;
+            }
+        }
+    }
+
+    @include breakpoint-max($desktop-width) {
+        &__bg {
+            display: none;
+        }
+
+        &-img {
+            width: 100%;
+            height: rem(1000);
+            top: rem(-50);
+            z-index: initial;
+        }
+
+        &__content {
+            width: 100%;
+            margin-top: rem(390);
+        }
+    }
+
+    @include breakpoint-max($tablet-width) {
+        &__footer {
+            flex-direction: column;
+            margin-top: rem(24);
+            gap: rem(24);
+
+            .partners {
+                justify-content: center;
+                gap: rem(24);
+
+                img {
+                    height: rem(44);
+                }
+            }
+        }
+
+        &__slide {
+            margin-top: rem(30);
+            margin-right: rem(-16);
+        }
+
+        .swiper-slide {
+            width: 70%;
+        }
+
+        .swiper-button-next {
+            right: rem(16);
+        }
+    }
+
+    @include breakpoint-max($mobile-width) {
+        &-img {
+            height: rem(650);
+            top: rem(-35);
+        }
+
+        &__content {
+            margin-top: rem(200);
+        }
+
+        &__text {
+            max-height: rem(72);
+            overflow: hidden;
+            transition: 0.3s;
+
+            .short-text {
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 3;
+
+                &.hide {
+                    display: none;
+                }
+            }
+
+            .full-text {
+                opacity: 0;
+                visibility: hidden;
+
+                &.show {
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+        }
+
+        .text-toggle {
+            display: flex;
+        }
+    }
+}
+
+.quick-links {
+    &__list {
+        display: flex;
+        gap: rem(16);
+        flex-wrap: wrap;
+    }
+
+    &__link {
+        color: $gray;
+        @include r-14;
+        border-radius: rem(4);
+        display: flex;
+        padding: rem(12);
+        align-items: center;
+        background-color: $bg-gray;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.10);
+            color: white;
+        }
+    }
+
+    &__title {
+        color: white;
+        @include m-20;
+        margin-bottom: rem(16);
+    }
+}

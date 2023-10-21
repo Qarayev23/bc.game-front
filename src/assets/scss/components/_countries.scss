@@ -1,0 +1,39 @@
+.countries {
+    display: flex;
+    flex-wrap: wrap;
+    gap: rem(16);
+    margin-top: rem(24);
+    margin-bottom: rem(32);
+
+    li {
+      flex: 1;
+      background-color: $black;
+      padding: rem(24);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: rem(10);
+      border-radius: rem(8);
+
+      img {
+        width: rem(20);
+        height: rem(20);
+        border-radius: rem(4);
+      }
+
+      span {
+        color: white;
+        white-space: nowrap;
+        @include m-16;
+      }
+    }
+
+    &--three {
+      @include breakpoint-min($desktop-sm-width) {
+        li {
+          flex: initial;
+          width: calc(33.33% - #{rem(16)});
+        }
+      }
+    }
+  }

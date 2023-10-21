@@ -1,0 +1,101 @@
+.g-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include font(14, 700, 20);
+    color: white !important;
+    border-radius: rem(8);
+
+    &:active {
+        transform: scale(.95);
+    }
+
+    &--green {
+        background: conic-gradient(from 180deg at 50% 50%, #49A31B -179.86deg, #2D8D2F 180.02deg, #49A31B 180.14deg, #2D8D2F 540.02deg);
+
+        &:hover {
+            background: conic-gradient(from 180deg at 50% 50%, #216622 -180deg, #3E8A17 180deg, #216622 180deg, #3E8A17 540deg);
+        }
+    }
+
+    &--purple {
+        background: conic-gradient(from 180deg at 50% 50%, #824CF6 -179.86deg, #753CE9 180.02deg, #824CF6 180.14deg, #753CE9 540.02deg);
+
+        &:hover {
+            background: conic-gradient(from 180deg at 50% 50%, #7444DB -179.86deg, #6433C7 180.02deg, #7444DB 180.14deg, #6433C7 540.02deg);
+        }
+    }
+
+    @include breakpoint-min($tablet-width) {
+        &--dt-s {
+            padding: rem(12) rem(24);
+        }
+
+        &--dt-m {
+            padding: rem(14) rem(32);
+        }
+
+        &--dt-l {
+            padding: rem(18) rem(44);
+        }
+    }
+
+    @include breakpoint-max($tablet-width) {
+        &--mb-m {
+            padding: rem(18) rem(16);
+        }
+
+        &--mb-l {
+            padding: rem(14) rem(32);
+        }
+    }
+}
+
+.section-gap {
+    margin-top: rem(80);
+
+    @include breakpoint-max($tablet-width) {
+        margin-top: rem(64);
+    }
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    &::after {
+        content: none;
+    }
+
+    display: flex;
+    width: rem(36);
+    height: rem(36);
+    justify-content: center;
+    align-items: center;
+    border-radius:rem(8);
+    background: rgba(255, 255, 255, 0.05);
+    transition: 0.3s;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.09);
+    }
+}
+
+.swiper-pagination {
+    display: flex;
+    gap: rem(10);
+    justify-content: center;
+
+    &-bullet {
+        width: rem(10);
+        height: rem(10);
+        border-radius: rem(100);
+        opacity: 0.15;
+        background: white;
+        transition: 0.3s;
+        margin: 0 !important;
+
+        &-active {
+            width: rem(28);
+            opacity: 1;
+        }
+    }
+}

@@ -1,0 +1,74 @@
+.table {
+  margin: rem(24) 0;
+
+  table {
+    background-color: $black;
+    border-radius: rem(8);
+    padding: rem(14) 0;
+
+    tbody {
+      tr {
+        padding: rem(14) rem(32);
+        display: flex;
+        gap: rem(80);
+
+        td {
+          @include m-16;
+          color: $gray;
+
+          &:first-of-type {
+            width: rem(175);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            gap: rem(12);
+            @include b-16;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+
+  &--sm {
+    position: relative;
+
+    table {
+      display: inline-block;
+    }
+
+    &>img {
+      width: 41%;
+      position: absolute;
+      right: rem(-80);
+      top: rem(-55);
+      z-index: -1;
+
+      @include breakpoint-max($desktop-width) {
+        right: rem(-40);
+        top: 0;
+      }
+
+      @include breakpoint-max($desktop-sm-width) {
+        display: none;
+      }
+    }
+
+    @include breakpoint-max($desktop-sm-width) {
+      table {
+        display: block;
+      }
+    }
+  }
+
+  @include breakpoint-max($tablet-width) {
+    table {
+      tbody {
+        tr {
+          padding: rem(14) rem(24);
+          gap: rem(20);
+        }
+      }
+    }
+  }
+}

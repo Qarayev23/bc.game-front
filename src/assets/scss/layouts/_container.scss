@@ -1,0 +1,13 @@
+.g-container {
+  width: 100%;
+  margin: 0 auto;
+  max-width: calc(100% - #{calc(rem(80 * 2))});
+
+  @include breakpoint-max($desktop-width) {
+    max-width: calc(100% - #{calc(rem(40) * 2)});
+  }
+
+  @include breakpoint-max($tablet-width) {
+    max-width: calc(100% - #{calc(rem(16) * 2)});
+  }
+}

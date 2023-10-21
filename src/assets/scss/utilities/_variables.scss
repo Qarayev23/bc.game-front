@@ -1,0 +1,30 @@
+$bg-black: #24262B;
+$black: #1A1C20;
+$bg-gray: #282A2F;
+$gray: #98A7B5;
+$green: #3BC117;
+$black-linear: linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0) 100%);
+
+$font-family: "Inter";
+
+$font-types: (
+  "Bold": 700,
+  "Regular": 400,
+  "SemiBold": 600,
+  "ExtraBold": 900,
+  "Medium": 500,
+  "Light": 300,
+);
+
+$break-points: (
+  "sm": 576,
+  "md": 768,
+  "lg": 991,
+  "xl": 1199,
+  "xxl": 1440,
+);
+
+$desktop-width: map-get($break-points, "xl");
+$desktop-sm-width: map-get($break-points, "lg");
+$tablet-width: map-get($break-points, "md");
+$mobile-width: map-get($break-points, "sm");
