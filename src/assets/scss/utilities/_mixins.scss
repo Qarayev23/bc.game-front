@@ -21,18 +21,32 @@
 }
 
 @mixin h-1 {
+  letter-spacing: rem(-3);
   @include font(68, 700, 80);
 
   @include breakpoint-max($tablet-width) {
+    letter-spacing: initial;
     @include font(40, 700, 46);
   }
 }
 
 @mixin h-2 {
+  letter-spacing: rem(-2);
   @include font(48, 700, 56);
 
   @include breakpoint-max($tablet-width) {
+    letter-spacing: initial;
     @include font(32, 700, 38);
+  }
+}
+
+@mixin h-3 {
+  letter-spacing: rem(-1);
+  @include font(32, 700, 36);
+
+  @include breakpoint-max($tablet-width) {
+    letter-spacing: initial;
+    @include font(24, 700, 30);
   }
 }
 
@@ -46,6 +60,10 @@
 
 @mixin m-16 {
   @include font(16, 500, 24);
+}
+
+@mixin m-15 {
+  @include font(15, 500, 22);
 }
 
 @mixin m-20 {

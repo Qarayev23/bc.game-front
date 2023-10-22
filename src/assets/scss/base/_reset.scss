@@ -52,9 +52,11 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
-ul {
+ul,
+ol {
   padding-left: 0;
   list-style: none;
+  margin-bottom: 0;
 }
 
 address {
@@ -79,11 +81,6 @@ h5 {
 
 p {
   margin: 0;
-}
-
-ul {
-  margin-bottom: 0;
-  padding-left: 0;
 }
 
 button {

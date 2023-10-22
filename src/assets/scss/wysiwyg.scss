@@ -3,17 +3,34 @@
     @include h-2;
     color: white;
     margin-bottom: rem(32);
-
-    &:not(:first-of-type) {
-      margin-top: rem(80);
-
-      @include breakpoint-max($tablet-width) {
-        margin-top: rem(64);
-      }
-    }
+    margin-top: rem(80);
 
     @include breakpoint-max($tablet-width) {
       margin-bottom: rem(24);
+      margin-top: rem(64);
+    }
+  }
+
+  h3:not([class]) {
+    @include h-3;
+    color: white;
+    margin-bottom: rem(24);
+    margin-top: rem(48);
+
+    @include breakpoint-max($tablet-width) {
+      margin-top: rem(32);
+    }
+  }
+
+  .banner {
+    h2,
+    h3 {
+      margin-top: 0;
+
+      @include breakpoint-max($tablet-width) {
+        margin-bottom: rem(16);
+        margin-top: 0;
+      }
     }
   }
 
@@ -26,12 +43,92 @@
     }
   }
 
-  p:not([class])+p:not([class]) {
+  p:not([class])+p:not([class]),
+  p:not([class])+ul:not([class]),
+  p:not([class])+ol:not([class]) {
     margin-top: rem(16);
   }
 
+  p:not([class])+ul:not([class]),
+  p:not([class])+ol:not([class]) {
+    margin-bottom: rem(24);
+  }
+
+  ul:not([class]) {
+    display: flex;
+    flex-direction: column;
+    gap: rem(12);
+
+    li {
+      position: relative;
+      padding-left: rem(15);
+      color: $gray;
+      @include r-16;
+
+      &:before {
+        content: "";
+        width: rem(10);
+        height: rem(10);
+        position: absolute;
+        left: 0;
+        top: rem(7);
+        background-color: $green;
+        opacity: 0.3;
+        border-radius: 50%;
+      }
+
+      &:after {
+        content: "";
+        width: rem(6);
+        height: rem(6);
+        position: absolute;
+        left: rem(2);
+        top: rem(9);
+        background-color: $green;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  ol:not([class]) {
+    display: flex;
+    flex-direction: column;
+    gap: rem(12);
+    counter-reset: ol-counter;
+
+    li {
+      position: relative;
+      padding-left: rem(28);
+      color: $gray;
+      @include r-16;
+      counter-increment: ol-counter;
+
+      &:before {
+        content: counter(ol-counter);
+        width: rem(20);
+        height: rem(20);
+        position: absolute;
+        left: 0;
+        top: rem(2);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: $green;
+        border-radius: rem(4);
+        color: white;
+        @include font(14, 600, 14);
+      }
+
+      &::marker {
+        display: none;
+        content: none;
+      }
+    }
+  }
+
   a:not([class]) {
-    color: #3BC117;
+    color: $green;
 
     &:hover {
       text-decoration: underline !important;

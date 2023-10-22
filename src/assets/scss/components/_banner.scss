@@ -1,0 +1,68 @@
+.banner {
+    background-color: $black;
+    border-radius: rem(8);
+    padding: rem(32);
+    position: relative;
+    margin-top: rem(48);
+
+    &--lg {
+        .banner {
+            &__content {
+                width: 70%;
+            }
+        }
+    }
+
+    &__decor {
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+        border-radius: rem(8);
+
+        &--mob {
+            display: none;
+            width: 100%;
+        }
+
+        &--desktop {
+            display: block;
+            width: 80%;
+        }
+    }
+
+    .g-btn {
+        width: fit-content;
+    }
+
+    @include breakpoint-max($desktop-sm-width) {
+        &__content {
+            width: 100% !important;
+            margin-top: rem(265);
+            position: relative;
+            z-index: 1;
+        }
+
+        &__decor {
+            &--mob {
+                display: block;
+            }
+
+            &--desktop {
+                display: none;
+            }
+        }
+    }
+
+    @include breakpoint-max($tablet-width) {
+        margin-top: rem(12);
+
+        .g-btn {
+            width: 100%;
+        }
+    }
+
+    @include breakpoint-max($mobile-width) {
+        padding: rem(32) rem(23);
+    }
+}

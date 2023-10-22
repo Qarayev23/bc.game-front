@@ -5,6 +5,7 @@
     @include font(14, 700, 20);
     color: white !important;
     border-radius: rem(8);
+    width: fit-content;
 
     &:active {
         transform: scale(.95);
@@ -26,7 +27,7 @@
         }
     }
 
-    @include breakpoint-min($tablet-width) {
+    @include breakpoint-min($tablet-width) {        
         &--dt-s {
             padding: rem(12) rem(24);
         }
@@ -41,6 +42,8 @@
     }
 
     @include breakpoint-max($tablet-width) {
+        width: 100%;
+
         &--mb-m {
             padding: rem(18) rem(16);
         }
