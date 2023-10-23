@@ -27,7 +27,7 @@
         }
     }
 
-    @include breakpoint-min($tablet-width) {        
+    @include breakpoint-min($tablet-width) {
         &--dt-s {
             padding: rem(12) rem(24);
         }
@@ -99,6 +99,26 @@
         &-active {
             width: rem(28);
             opacity: 1;
+        }
+    }
+}
+
+.wrapper {
+    display: flex;
+    gap: rem(48);
+
+    .main-content {
+        min-width: rem(400);
+        max-width: 45%;
+    }
+
+    @include breakpoint-max($desktop-width) {
+        flex-direction: column;
+        gap: rem(24);
+
+        .main-content {
+            min-width: initial;
+            max-width: initial;
         }
     }
 }

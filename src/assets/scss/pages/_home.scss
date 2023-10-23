@@ -42,17 +42,11 @@
     }
 
     &__text {
-        p {
-            color: $gray;
-            @include r-16;
+        color: $gray;
+        @include r-16;
 
-            b {
-                @include b-16;
-            }
-        }
-
-        .short-text {
-            display: none;
+        b {
+            @include b-16;
         }
     }
 
@@ -241,6 +235,10 @@
         .swiper-button-next {
             right: rem(16);
         }
+
+        .swiper-pagination {
+            left: rem(-8);
+        }
     }
 
     @include breakpoint-max($mobile-width) {
@@ -253,30 +251,22 @@
             margin-top: rem(200);
         }
 
-        &__text {
-            max-height: rem(72);
+        .truncate {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            max-height: var(--truncate-height, auto);
+            max-width: 550px;
+            margin: 0 auto;
             overflow: hidden;
-            transition: 0.3s;
+            transition: max-height 0.3s ease;
+        }
 
-            .short-text {
-                display: -webkit-box;
-                -webkit-box-orient: vertical;
-                -webkit-line-clamp: 3;
+        .truncate--line-clamped {
+            -webkit-line-clamp: 3;
+        }
 
-                &.hide {
-                    display: none;
-                }
-            }
-
-            .full-text {
-                opacity: 0;
-                visibility: hidden;
-
-                &.show {
-                    opacity: 1;
-                    visibility: visible;
-                }
-            }
+        .truncate--expanded {
+            max-height: var(--truncate-height-expanded, auto);
         }
 
         .text-toggle {
@@ -311,5 +301,37 @@
         color: white;
         @include m-20;
         margin-bottom: rem(16);
+    }
+}
+
+.services {
+    display: flex;
+    flex-direction: column;
+    gap: rem(24);
+    position: relative;
+
+    &__content {
+        width: 59%;
+    }
+
+    &__decor {
+        position: absolute;
+        right: 0;
+        top: rem(-60);
+        z-index: -1;
+        width: 39%;
+    }
+
+    @include breakpoint-max($desktop-width) {
+        &__decor {
+            position: static;
+            width: 100%;
+            height: rem(331);
+        }
+
+        &__content {
+            width: 100%;
+            order: 1;
+        }
     }
 }

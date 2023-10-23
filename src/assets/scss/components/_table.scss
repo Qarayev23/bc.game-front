@@ -1,5 +1,22 @@
 .table {
   margin: rem(24) 0;
+  border-radius: rem(8);
+
+  &::-webkit-scrollbar {
+    width: rem(4);
+    height: rem(4);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: rem(20);
+    border: 1px solid transparent;
+    background: #FFFFFF33;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: rem(20);
+    border: 1px solid transparent;
+  }
 
   table {
     background-color: $black;
@@ -8,20 +25,13 @@
 
     tbody {
       tr {
-        padding: rem(14) rem(32);
-        display: flex;
-        gap: rem(80);
-
         td {
           @include m-16;
           color: $gray;
 
           &:first-of-type {
-            width: rem(175);
-            flex-shrink: 0;
             display: flex;
             align-items: center;
-            gap: rem(12);
             @include b-16;
             color: white;
           }
@@ -35,9 +45,25 @@
 
     table {
       display: inline-block;
+
+      tbody {
+        tr {
+          padding: rem(14) rem(32);
+          display: flex;
+          gap: rem(80);
+
+          td {
+            &:first-of-type {
+              width: rem(175);
+              flex-shrink: 0;
+              gap: rem(12);
+            }
+          }
+        }
+      }
     }
 
-    &>img {
+    .table__decor {
       width: 41%;
       position: absolute;
       right: rem(-80);
@@ -61,12 +87,111 @@
     }
   }
 
-  @include breakpoint-max($tablet-width) {
+  &--full {
     table {
+      width: 100%;
+
+      thead {
+        tr {
+          th {
+            @include m-16;
+            color: $gray;
+            padding-bottom: rem(22);
+            padding-top: rem(28);
+            padding-right: rem(150);
+            white-space: nowrap;
+
+            &:first-of-type {
+              padding-left: rem(80);
+            }
+
+            &:last-of-type {
+              text-align: end;
+              padding-right: rem(80);
+            }
+          }
+        }
+      }
+
       tbody {
         tr {
-          padding: rem(14) rem(24);
-          gap: rem(20);
+          td {
+            padding-bottom: rem(22);
+            white-space: nowrap;
+
+            &:first-of-type {
+              padding-left: rem(32);
+              gap: rem(24);
+              transform: translateY(rem(6));
+            }
+
+            &:last-of-type {
+              padding-right: rem(80);
+              text-align: end;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @include breakpoint-max($desktop-width) {
+    table {
+      thead {
+        tr {
+          th {
+            padding-right: rem(20);
+          }
+        }
+      }
+    }
+  }
+
+  @include breakpoint-max($desktop-sm-width) {
+    overflow-x: auto;
+  }
+
+  @include breakpoint-max($tablet-width) {
+    padding-bottom: rem(12);
+
+    &--sm {
+      table {
+        tbody {
+          tr {
+            padding: rem(14) rem(24);
+            gap: rem(20);
+          }
+        }
+      }
+    }
+
+    &--full {
+      table {
+        thead {
+          tr {
+            th {
+              padding-right: rem(20);
+
+              &:first-of-type {
+                padding-left: rem(24);
+              }
+
+              &:last-of-type {
+                padding-right: rem(24);
+              }
+            }
+          }
+        }
+
+        tbody {
+          tr {
+            td {
+              &:first-of-type {
+                padding-left: rem(24);
+                gap: rem(12);
+              }
+            }
+          }
         }
       }
     }

@@ -10,6 +10,8 @@
         gap: rem(30);
         position: relative;
         z-index: 1;
+        justify-content: space-between;
+        gap: rem(55);
     }
 
     &__content {
@@ -70,9 +72,15 @@
     &__slide {
         overflow-x: hidden;
 
+        @include breakpoint-min(1440) {
+            .swiper-wrapper {
+                margin-right: rem(-20);
+            }
+        }
+
         .swiper-slide {
-            width: rem(249);
-            height: rem(290);
+            width: rem(218);
+            height: rem(260);
 
             img {
                 width: 100%;
@@ -106,12 +114,12 @@
         }
 
         &__slide {
-            padding-bottom: rem(20);
+            padding-bottom: rem(52);
 
             .swiper-button-next,
             .swiper-button-prev {
                 display: flex;
-                bottom: rem(-16) !important;
+                bottom: 0 !important;
                 top: initial;
             }
 
@@ -125,7 +133,7 @@
 
             .swiper-pagination {
                 display: flex;
-                bottom: rem(-3) !important;
+                bottom: rem(13) !important;
             }
         }
     }
@@ -139,7 +147,6 @@
         }
 
         &__slide {
-            padding-bottom: rem(20);
             margin-right: rem(-16);
 
             .swiper-slide {

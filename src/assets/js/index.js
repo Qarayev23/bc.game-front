@@ -5,34 +5,42 @@ import 'swiper/css/navigation';
 import "/src/assets/scss/main.scss";
 Swiper.use([Pagination, Navigation, Autoplay]);
 
-// HERO TEXT TOGGLE
-const fullText = document.querySelector(".full-text")
-const shortText = document.querySelector(".short-text")
-const heroText = document.querySelector(".hero__text")
+// HERO TRUNCATE TEXT
+const toggleBtn = document.querySelector('.text-toggle');
+const truncateEl = document.querySelector('.truncate');
+const truncateInnerEl = document.querySelector('.truncate__inner');
+const truncateRect = truncateEl.getBoundingClientRect();
+let truncateInnerRect = truncateInnerEl.getBoundingClientRect();
+truncateEl.style.setProperty("--truncate-height", `${truncateRect.height}px`);
 
-document.querySelector(".text-toggle").addEventListener("click", function () {
-    fullText.classList.toggle("show")
-    shortText.classList.toggle("hide")
-    this.classList.toggle("rotate")
-
-    if (this.classList.contains("rotate")) {
-        const maxHeight = fullText.offsetHeight
-        heroText.style.maxHeight = maxHeight + "px"
+toggleBtn.addEventListener('click', () => {
+    toggleBtn.classList.toggle('rotate');
+    if (truncateEl.classList.contains('truncate--expanded')) {
+        close();
     } else {
-        heroText.style.maxHeight = "72px"
+        open();
     }
-})
+});
 
-window.onresize = () => {
-    if (window.innerWidth > 768) {
-        heroText.style.maxHeight = "auto"
-    }
+function open() {
+    truncateEl.classList.remove('truncate--line-clamped');
+    window.requestAnimationFrame(() => {
+        truncateInnerRect = truncateInnerEl.getBoundingClientRect();
+        truncateEl.style.setProperty("--truncate-height-expanded", `${truncateInnerRect.height}px`);
+        truncateEl.classList.add('truncate--expanded');
+    });
+}
+
+function close() {
+    truncateEl.classList.remove('truncate--expanded');
+    setTimeout(() => {
+        truncateEl.classList.add('truncate--line-clamped');
+    }, 300);
 }
 
 // SWIPER SLIDE
 const heroSwiper = new Swiper("#heroSwiper", {
     slidesPerView: "auto",
-    slidesPerGroup: 2,
     spaceBetween: 16,
     freeMode: true,
     autoplay: {
@@ -63,6 +71,7 @@ const heroSwiper = new Swiper("#heroSwiper", {
 
 const bonusSwiper = new Swiper("#bonusSwiper", {
     slidesPerView: "auto",
+    spaceBetween: 12,
     freeMode: true,
     speed: 1500,
     navigation: {
@@ -73,4 +82,9 @@ const bonusSwiper = new Swiper("#bonusSwiper", {
         el: ".bonus-offers__slide .swiper-pagination",
         clickable: true,
     },
+    breakpoints: {
+        576: {
+            spaceBetween: 20,
+        },
+    }
 });

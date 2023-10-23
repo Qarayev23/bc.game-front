@@ -5,10 +5,30 @@
     position: relative;
     margin-top: rem(48);
 
+    &__content {
+        position: relative;
+        z-index: 1;
+    }
+
     &--lg {
         .banner {
             &__content {
                 width: 70%;
+            }
+        }
+    }
+
+    &--sm {
+        .banner {
+            &__content {
+                width: 41%;
+            }
+
+            &__decor {
+                &--desktop {
+                    width: 100%;
+                    object-fit: cover;
+                }
             }
         }
     }
@@ -35,12 +55,30 @@
         width: fit-content;
     }
 
+    &__bg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: rem(8);
+        background:
+            radial-gradient(67.66% 296.68% at 72.41% 235.01%, rgba(129, 74, 245, 0.9) 0%, rgba(129, 74, 245, 0) 100%);
+    }
+
+    @include breakpoint-max($desktop-width) {
+        &--sm {
+            .banner {
+                &__content {
+                    width: 50%;
+                }
+            }
+        }
+    }
+
     @include breakpoint-max($desktop-sm-width) {
         &__content {
             width: 100% !important;
-            margin-top: rem(265);
-            position: relative;
-            z-index: 1;
         }
 
         &__decor {
@@ -52,17 +90,47 @@
                 display: none;
             }
         }
+
+        &__bg {
+            background: radial-gradient(241.83% 159.55% at 72.41% 146.41%, rgba(129, 74, 245, 0.9) 0%, rgba(129, 74, 245, 0) 100%);
+        }
+
+        &--sm {
+            .banner {
+                &__decor {
+                    &--mob {
+                        height: rem(230);
+                        bottom: 0;
+                        top: initial;
+                    }
+                }
+
+                &__content {
+                    margin-bottom: rem(230);
+                }
+            }
+        }
+
+        &--lg {
+            .banner {
+                &__content {
+                    margin-top: rem(265);
+                }
+            }
+        }
     }
 
     @include breakpoint-max($tablet-width) {
-        margin-top: rem(12);
-
         .g-btn {
             width: 100%;
         }
     }
 
-    @include breakpoint-max($mobile-width) {
+    @include breakpoint-max(430) {
         padding: rem(32) rem(23);
+
+        &__decor {
+            object-fit: cover;
+        }
     }
 }

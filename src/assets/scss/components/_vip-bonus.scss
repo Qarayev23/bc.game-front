@@ -1,84 +1,62 @@
 .vip-bonus {
-    &__wrapper {
+    display: flex;
+    padding: rem(24);
+    gap: rem(16);
+    border-radius: rem(8);
+    background: $black;
+    height: fit-content;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    min-width: rem(600);
+
+    &__item {
+        background: $bg-black;
+        border-radius: rem(8);
+        padding: rem(24) rem(5);
         display: flex;
-        gap: rem(48);
+        flex-direction: column;
+        align-items: center;
+        gap: rem(12);
+        width: calc(25% - rem(12));
     }
 
-    &-grid {
-        display: flex;
-        padding: rem(24);
-        gap: rem(16);
-        border-radius: rem(8);
-        background: $black;
-        height: fit-content;
-        width: rem(700);
-        flex-shrink: 0;
-        flex-wrap: wrap;
+    &__img {
+        width: rem(64);
+        height: rem(64);
+    }
 
-        &__item {
-            background: $bg-black;
-            border-radius: rem(8);
-            padding: rem(24) rem(5);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: rem(12);
-            width: calc(25% - rem(12));
-        }
-
-        &__img {
-            width: rem(64);
-            height: rem(64);
-        }
-
-        &__title {
-            @include m-16;
-            color: white;
-            text-align: center;
-        }
+    &__title {
+        @include m-16;
+        color: white;
+        text-align: center;
     }
 
     @include breakpoint-max($desktop-width) {
-        &__wrapper {
-            flex-direction: column;
-            gap: rem(24);
-        }
-
-        &-grid {
-            width: 100%;
-        }
-
-        &__content {
-            order: 1;
-        }
+        min-width: 100%;
     }
 
     @include breakpoint-max($tablet-width) {
-        &-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: rem(12);
-            justify-content: center;
+        display: flex;
+        flex-wrap: wrap;
+        gap: rem(12);
+        justify-content: center;
 
-            &__item {
-                padding: rem(12) rem(5);
-                width: calc(33.33% - rem(8));
-            }
+        &__item {
+            padding: rem(12) rem(5);
+            width: calc(33.33% - rem(8));
         }
     }
 
     @include breakpoint-max($mobile-width) {
-        &-grid {
-            padding: rem(12);
+        padding: rem(12);
 
-            &__title {
-                @include m-15;
-            }
+        &__title {
+            @include m-15;
+        }
 
-            &__img {
-                width: rem(60);
-                height: rem(60);
-            }
+        &__img {
+            width: rem(60);
+            height: rem(60);
         }
     }
 }

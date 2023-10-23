@@ -1,0 +1,29 @@
+.features {
+    display: flex;
+    flex-direction: column;
+    gap: rem(16);
+    margin-top: rem(24);
+
+    &__item {
+        display: flex;
+        align-items: flex-start;
+        gap: rem(12);
+        background-color: $black;
+        border-radius: rem(8);
+        padding: rem(24);
+    }
+
+    &__icon {
+        margin-top: rem(2);
+    }
+
+    &__title {
+        color: white;
+        @include m-20;
+        margin-bottom: rem(4);
+    }
+
+    @include breakpoint-max($tablet-width) {
+        gap: rem(12);
+    }
+}
