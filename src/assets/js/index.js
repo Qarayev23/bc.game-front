@@ -2,8 +2,13 @@ import Swiper, { Pagination, Navigation, Autoplay } from "swiper";
 import "swiper/css";
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import "/src/assets/scss/main.scss";
+import * as bootstrap from 'bootstrap';
 Swiper.use([Pagination, Navigation, Autoplay]);
+
+import Core from "./modules/Core.js";
+
+const core = new Core();
+
 
 // HERO TRUNCATE TEXT
 const toggleBtn = document.querySelector('.text-toggle');
@@ -83,8 +88,41 @@ const bonusSwiper = new Swiper("#bonusSwiper", {
         clickable: true,
     },
     breakpoints: {
-        576: {
+        1200: {
+            slidesPerView: 4,
+        },
+        768: {
             spaceBetween: 20,
+            slidesPerView: "auto",
+        },
+    }
+});
+
+const registerProcessSwiper = new Swiper("#registerProcess", {
+    spaceBetween: 12,
+    slidesPerView: "auto",
+    freeMode: true,
+    speed: 1500,
+    navigation: {
+        nextEl: ".register-process__slide .swiper-button-next",
+        prevEl: ".register-process__slide .swiper-button-prev",
+    },
+    pagination: {
+        el: ".register-process__slide .swiper-pagination",
+        clickable: true,
+    },
+    breakpoints: {
+        1200: {
+            spaceBetween: 24,
+            slidesPerView: 4,
+        },
+        991: {
+            spaceBetween: 24,
+            slidesPerView: 3,
+        },
+        576: {
+            spaceBetween: 24,
+            slidesPerView: 2,
         },
     }
 });

@@ -1,0 +1,70 @@
+.register-process {
+    background-color: $black;
+    padding: rem(32);
+    border-radius: rem(8);
+    margin-bottom: rem(24);
+    margin-top: rem(24);
+    position: relative;
+
+    .swiper-pagination,
+    .swiper-button-next,
+    .swiper-button-prev {
+        display: none;
+    }
+
+    &__img {
+        width: 100%;
+        height: rem(500);
+        object-fit: contain;
+    }
+
+    &__content {
+        display: flex;
+        align-items: flex-start;
+        margin-top: rem(16);
+        gap: rem(3);
+    }
+
+    &__text {
+        color: white;
+        @include r-16;
+    }
+
+    &__step {
+        color: $green;
+        @include r-16;
+    }
+
+    @include breakpoint-max($desktop-width) {
+        margin-bottom: rem(76);
+
+        .swiper-pagination,
+        .swiper-button-next,
+        .swiper-button-prev {
+            display: flex;
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            top: initial;
+            bottom: rem(-52);
+        }
+
+        .swiper-pagination {
+            bottom: rem(-39);
+        }
+    }
+
+    @include breakpoint-max($mobile-width) {
+        padding: rem(24) rem(16);
+        .swiper-slide {
+            width: rem(236);
+        }
+
+        &__img {
+            width: 100%;
+            height: rem(320);
+            object-fit: contain;
+        }
+    }
+}

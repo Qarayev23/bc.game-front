@@ -1,0 +1,24 @@
+.faq {
+    background: $bg-gray;
+    padding-top: rem(80);
+    padding-bottom: rem(60);
+    margin-top: rem(80);
+
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: rem(48);
+    }
+
+    &__title {
+        @include h-2;
+        color: white;
+        margin-bottom: rem(12);
+    }
+
+    @include breakpoint-max($tablet-width) {
+        padding-top: rem(64);
+        padding-bottom: rem(44);
+        margin-top: rem(64);
+    }
+}

@@ -1,0 +1,68 @@
+.accordion {
+    &-item {
+        border: none;
+        background: transparent !important;
+        border-bottom: 1px solid #FFFFFF33 !important;
+        border-radius: 0 !important;
+
+        &:last-of-type {
+            border-bottom: none !important;
+        }
+    }
+
+    &-button {
+        background: transparent !important;
+        color: white !important;
+        @include b-20;
+        outline: none !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        padding: rem(20) 0;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        &::after {
+            content: none;
+        }
+
+        &.collapsed {
+            .accordion-button__icon {
+                background: #FFFFFF33;
+
+                .plus-icon {
+                    display: block;
+                }
+
+                .minus-icon {
+                    display: none;
+                }
+            }
+        }
+
+        &__icon {
+            width: rem(32);
+            height: rem(32);
+            border-radius: rem(100);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: $green;
+            flex-shrink: 0;
+            transition: 0.3s;
+
+            .plus-icon {
+                display: none;
+            }
+
+            .minus-icon {
+                display: block;
+            }
+        }
+
+    }
+
+    &-body {
+        padding: 0;
+        padding-bottom: rem(20);
+    }
+}

@@ -10,7 +10,7 @@
         z-index: 1;
     }
 
-    &--lg {
+    &--refer {
         .banner {
             &__content {
                 width: 70%;
@@ -18,7 +18,7 @@
         }
     }
 
-    &--sm {
+    &--lottery {
         .banner {
             &__content {
                 width: 41%;
@@ -29,6 +29,36 @@
                     width: 100%;
                     object-fit: cover;
                 }
+            }
+
+            &__bg {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                border-radius: rem(8);
+                background:
+                    radial-gradient(67.66% 296.68% at 72.41% 235.01%, rgba(129, 74, 245, 0.9) 0%, rgba(129, 74, 245, 0) 100%);
+            }
+        }
+    }
+
+    &--conclusion {
+        .banner {
+            &__content {
+                width: 42%;
+            }
+
+            &__bg {
+                display: none;
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                border-radius: rem(8);
+                background: radial-gradient(256.8% 169.43% at 72.41% 151.53%, rgba(129, 74, 245, 0.9) 0%, rgba(129, 74, 245, 0) 100%);
             }
         }
     }
@@ -55,19 +85,8 @@
         width: fit-content;
     }
 
-    &__bg {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        border-radius: rem(8);
-        background:
-            radial-gradient(67.66% 296.68% at 72.41% 235.01%, rgba(129, 74, 245, 0.9) 0%, rgba(129, 74, 245, 0) 100%);
-    }
-
     @include breakpoint-max($desktop-width) {
-        &--sm {
+        &--lottery {
             .banner {
                 &__content {
                     width: 50%;
@@ -91,11 +110,7 @@
             }
         }
 
-        &__bg {
-            background: radial-gradient(241.83% 159.55% at 72.41% 146.41%, rgba(129, 74, 245, 0.9) 0%, rgba(129, 74, 245, 0) 100%);
-        }
-
-        &--sm {
+        &--lottery {
             .banner {
                 &__decor {
                     &--mob {
@@ -108,13 +123,35 @@
                 &__content {
                     margin-bottom: rem(230);
                 }
+
+                &__bg {
+                    background: radial-gradient(241.83% 159.55% at 72.41% 146.41%, rgba(129, 74, 245, 0.9) 0%, rgba(129, 74, 245, 0) 100%);
+                }
             }
         }
 
-        &--lg {
+        &--refer {
             .banner {
                 &__content {
                     margin-top: rem(265);
+                }
+            }
+        }
+
+        &--conclusion {
+            .banner {
+                &__content {
+                    margin-bottom: rem(300);
+                }
+
+                &__decor {
+                    bottom: 0;
+                    top: initial;
+                    height: rem(450)
+                }
+
+                &__bg {
+                    display: block;
                 }
             }
         }
@@ -126,11 +163,43 @@
         }
     }
 
-    @include breakpoint-max(430) {
-        padding: rem(32) rem(23);
+    @include breakpoint-max($mobile-width) {
+        padding: rem(24);
 
-        &__decor {
-            object-fit: cover;
+        &--conclusion {
+            .banner {
+                &__content {
+                    margin-bottom: rem(193);
+                }
+
+                &__decor {
+                    height: rem(270)
+                }
+            }
+        }
+    }
+
+    @include breakpoint-max(430) {
+        &--refer {
+            padding-bottom: rem(32);
+
+            .banner {
+                &__content {
+                    margin-top: rem(265);
+                }
+
+                &__decor {
+                    object-fit: cover;
+                }
+            }
+        }
+
+        &--lottery {
+            .banner {
+                &__decor {
+                    object-fit: cover;
+                }
+            }
         }
     }
 }

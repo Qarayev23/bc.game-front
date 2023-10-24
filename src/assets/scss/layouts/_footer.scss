@@ -1,0 +1,235 @@
+.footer {
+    background-color: $black;
+    padding-top: rem(80);
+
+    &__title {
+        @include b-20;
+        color: white;
+        margin-bottom: rem(16);
+    }
+
+    &__top {
+        display: flex;
+        gap: rem(48);
+        padding-bottom: rem(48);
+        border-bottom: 1px solid #FFFFFF1A;
+    }
+
+    &-brand {
+        display: flex;
+        flex-direction: column;
+        gap: rem(24);
+        width: rem(608);
+        margin-right: auto;
+
+        &__logo {
+            width: rem(194);
+            height: rem(48);
+            object-fit: contain;
+        }
+
+        &__text {
+            @include r-14;
+            color: $gray;
+        }
+    }
+
+    &-nav {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: rem(12) rem(48);
+        width: min-content;
+        height: min-content;
+        margin-top: rem(48);
+
+        &__link {
+            @include r-14;
+            color: white;
+            white-space: nowrap;
+
+            &:hover {
+                color: $gray;
+            }
+        }
+    }
+
+    &-social {
+        display: flex;
+        flex-direction: column;
+        gap: rem(16);
+        margin-top: rem(48);
+
+        &__title {
+            @include r-14;
+            color: $gray;
+            white-space: nowrap;
+        }
+
+        &__list {
+            display: flex;
+            gap: rem(12);
+        }
+    }
+
+    &-networks {
+        padding: rem(48) 0;
+        border-bottom: 1px solid #FFFFFF1A;
+
+        &__list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: rem(32);
+
+            &__item {
+                width: rem(40);
+                height: rem(40);
+            }
+        }
+    }
+
+    &-sponsorship {
+        padding: rem(48) 0;
+        border-bottom: 1px solid #FFFFFF1A;
+
+        &__list {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: rem(32);
+        }
+
+        &__img {
+            height: rem(80);
+            width: 100%;
+            object-fit: contain;
+        }
+    }
+
+    &-license {
+        padding: rem(48) 0;
+        border-bottom: 1px solid #FFFFFF1A;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: rem(32);
+        position: relative;
+
+        &__content {
+            display: flex;
+            gap: rem(16);
+            align-items: flex-start;
+            width: 79%;
+        }
+
+        &__text {
+            @include r-16;
+            color: $gray;
+        }
+    }
+
+    &-copyright {
+        padding: rem(48) 0;
+
+        &__text {
+            @include r-16;
+            color: $gray;
+        }
+    }
+
+    @include breakpoint-max($desktop-sm-width) {
+        &__top {
+            flex-wrap: wrap;
+            position: relative;
+            gap: rem(32);
+        }
+
+        &-brand {
+            width: 100%;
+        }
+
+        &-nav {
+            width: 100%;
+            margin-top: 0;
+            gap: rem(12) rem(24);
+        }
+
+        &-social {
+            position: absolute;
+            right: 0;
+            top: 8px;
+            margin-top: 0;
+
+            &__title {
+                display: none;
+            }
+        }
+
+        &-sponsorship {
+            &__list {
+                display: grid;
+                grid-template-columns: repeat(3, auto);
+                gap: rem(16) rem(32);
+            }
+
+            &__img {
+                width: 100%;
+            }
+        }
+    }
+
+    @include breakpoint-max($tablet-width) {
+        padding-top: rem(48);
+
+        &__logo {
+            padding-bottom: rem(180);
+        }
+
+        &-networks {
+            padding: rem(32) 0;
+
+            &__list {
+                gap: rem(24);
+            }
+        }
+
+        &-sponsorship {
+            padding: rem(32) 0;
+        }
+
+        &-license {
+            padding: rem(32) 0;
+        }
+
+        &-copyright {
+            padding: rem(32) 0;
+        }
+    }
+
+    @include breakpoint-max($mobile-width) {
+        &-brand {
+            &__logo {
+                width: rem(180);
+            }
+        }
+
+        &-nav {
+            grid-template-columns: repeat(2, auto);
+
+            &__link {
+                white-space: initial;
+            }
+        }
+
+        &-license {
+            &__content {
+                width: 100%;
+            }
+
+            &__img {
+                position: absolute;
+                left: 0;
+                bottom: rem(32);
+            }
+        }
+    }
+}

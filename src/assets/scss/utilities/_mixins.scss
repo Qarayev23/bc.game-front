@@ -74,6 +74,10 @@
   @include font(16, 700, 24);
 }
 
+@mixin b-20 {
+  @include font(20, 700, 30);
+}
+
 @mixin b-30 {
   @include font(30, 700, 40);
 }
