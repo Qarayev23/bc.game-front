@@ -1,0 +1,26 @@
+.uncover-btn {
+    color: white;
+    @include r-14;
+    align-items: center;
+    gap: rem(10);
+    margin-top: rem(12);
+    display: none;
+
+    svg {
+        width: rem(14);
+        height: rem(6);
+        stroke: white;
+        transform: translateY(rem(2));
+        transition: 0.3s;
+    }
+
+    &.rotate {
+        svg {
+            transform: rotate(180deg);
+        }
+    }
+
+    @include breakpoint-max($mobile-width) {
+        display: flex;
+    }
+}

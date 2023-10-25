@@ -19,6 +19,8 @@
         &::after {
             content: "";
             background-image: url("/svg/chevrone-right.svg");
+            background-repeat: no-repeat;
+            background-position: center;
             width: rem(20);
             height: rem(20);
             position: absolute;

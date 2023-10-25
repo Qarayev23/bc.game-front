@@ -1,0 +1,13 @@
+.author {
+    @include r-14;
+    color: $gray;
+
+    a {
+        color: white;
+        border-bottom: rem(1) solid white;
+    }
+
+    @include breakpoint-max($tablet-width) {
+        display: none;
+    }
+}

@@ -50,29 +50,6 @@
         }
     }
 
-    .text-toggle {
-        color: white;
-        @include r-14;
-        align-items: center;
-        gap: rem(10);
-        margin-top: rem(12);
-        display: none;
-
-        svg {
-            width: rem(14);
-            height: rem(6);
-            stroke: white;
-            transform: translateY(rem(2));
-            transition: 0.3s;
-        }
-
-        &.rotate {
-            svg {
-                transform: rotate(180deg);
-            }
-        }
-    }
-
     &-img {
         position: absolute;
         top: 0;
@@ -249,28 +226,6 @@
 
         &__content {
             margin-top: rem(200);
-        }
-
-        .truncate {
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            max-height: var(--truncate-height, auto);
-            max-width: 550px;
-            margin: 0 auto;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-
-        .truncate--line-clamped {
-            -webkit-line-clamp: 3;
-        }
-
-        .truncate--expanded {
-            max-height: var(--truncate-height-expanded, auto);
-        }
-
-        .text-toggle {
-            display: flex;
         }
     }
 }

@@ -1,0 +1,78 @@
+<extends src="layouts/base.html">
+    <block name="content">
+        <div class="g-container">
+            <div class="d-flex justify-content-between align-items-center">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb__item">
+                        <a href="/" class="breadcrumb__link">Home</a>
+                    </li>
+                    <li class="breadcrumb__item">
+                        <a href="/" class="breadcrumb__link">Slots</a>
+                    </li>
+                    <li class="breadcrumb__item breadcrumb__item--active">
+                        Gates of Olympus
+                    </li>
+                </ul>
+
+                <div class="author">
+                    By <a href="">Pragmatic Play</a>
+                </div>
+            </div>
+        </div>
+
+        <section class="game-page wysiwyg">
+            <div class="g-container">
+                <h1>Gates of Olympus</h1>
+                <div class="truncate truncate--line-clamped game-description">
+                    <div class="truncate__inner">
+                        <p>
+                            The gates to the realm of Zeus are wide open to all players in Gates of Olympus™, a 6×5 video
+                            slot
+                            with 20 paylines where symbols drop down, paying out in clusters of 8 symbols or more. The Gifts
+                            of
+                            Zeus are four multiplier symbols that can take any value up to 500x. Climb Olympus in free spins
+                            with 15 free games during which all multipliers add up, rewarding the player with huge prizes.
+                        </p>
+                    </div>
+                </div>
+                <button type="button" class="uncover-btn">
+                    Uncover
+                    <svg>
+                        <use xlink:href="/svg/down.svg#down" />
+                    </svg>
+                </button>
+                <div class="game-box">
+                    <div class="game-box__wrapper">
+                        <div class="game-box-img">
+                            <img data-src="/svg/gates-of-olympus.svg" class="lozad" alt="Gates of Olympus">
+                            <div class="game-box-img__overlay"></div>
+                        </div>
+                        <div class="game-box__content">
+                            <button type="button" class="g-btn g-btn--purple g-btn--dt-l g-btn--mb-m">
+                                Play Casino
+                            </button>
+                            <button type="button" class="g-btn g-btn--gray g-btn--dt-l g-btn--mb-m" id="demo">
+                                Demo
+                            </button>
+                        </div>
+                        <button type="button" class="resize-btn resize-btn--fullscreen" id="fullscreenBtn">
+                            <img src="/svg/fullscreen.svg" alt="">
+                        </button>
+                        <button type="button" class="resize-btn resize-btn--minimize" id="minimizeBtn">
+                            <img src="/svg/minimize.svg" alt="">
+                        </button>
+    
+                        <div class="iframe-box" id="iframe">
+                            <iframe src="" allow="fullscreen; camera; microphone; autoplay">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </block>
+
+    <block name="scripts">
+        <script type="module" src="/src/assets/js/game.js"></script>
+    </block>
+</extends>

@@ -47,6 +47,14 @@
 
 @import "components/breadcrumb";
 
+@import "components/author";
+
+@import "components/swiper-items";
+
+@import "components/g-btn";
+
+@import "components/uncover-btn";
+
 /* Layouts */
 
 @import "layouts/container";
@@ -58,6 +66,8 @@
 /* Pages */
 
 @import "pages/home";
+
+@import "pages/game";
 
 /* wysiwyg */
 

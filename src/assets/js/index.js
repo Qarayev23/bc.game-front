@@ -9,7 +9,7 @@ import Core from "./modules/Core.js";
 const core = new Core();
 
 // HERO TRUNCATE TEXT
-const toggleBtn = document.querySelector('.text-toggle');
+const toggleBtn = document.querySelector('.uncover-btn');
 const truncateEl = document.querySelector('.truncate');
 const truncateInnerEl = document.querySelector('.truncate__inner');
 const truncateRect = truncateEl.getBoundingClientRect();

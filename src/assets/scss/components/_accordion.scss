@@ -20,6 +20,7 @@
         padding: rem(20) 0;
         justify-content: space-between;
         align-items: flex-start;
+        gap: rem(10);
 
         &::after {
             content: none;
