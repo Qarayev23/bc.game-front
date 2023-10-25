@@ -39,6 +39,12 @@ minimizeBtn.addEventListener("click", () => {
     }
 });
 
+document.addEventListener('fullscreenchange', () => {
+    if (!document.fullscreenElement) {
+        fullscreenElement.classList.remove("fullscreen");
+    }
+});
+
 // GAME TRUNCATE TEXT
 const toggleBtn = document.querySelector('.uncover-btn');
 const truncateEl = document.querySelector('.truncate');
@@ -55,7 +61,6 @@ toggleBtn.addEventListener('click', () => {
         open();
     }
 });
-
 
 function open() {
     truncateEl.classList.remove('truncate--line-clamped');
