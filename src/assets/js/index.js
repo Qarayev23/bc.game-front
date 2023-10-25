@@ -2,13 +2,11 @@ import Swiper, { Pagination, Navigation, Autoplay } from "swiper";
 import "swiper/css";
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import * as bootstrap from 'bootstrap';
 Swiper.use([Pagination, Navigation, Autoplay]);
 
 import Core from "./modules/Core.js";
 
 const core = new Core();
-
 
 // HERO TRUNCATE TEXT
 const toggleBtn = document.querySelector('.text-toggle');

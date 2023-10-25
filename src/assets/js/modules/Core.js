@@ -1,3 +1,4 @@
+import * as bootstrap from 'bootstrap';
 import "/src/assets/scss/main.scss";
 
 // Libraries

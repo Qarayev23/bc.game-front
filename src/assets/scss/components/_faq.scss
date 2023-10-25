@@ -1,13 +1,21 @@
 .faq {
-    background: $bg-gray;
-    padding-top: rem(80);
     padding-bottom: rem(60);
-    margin-top: rem(80);
+
+    &--bg {
+        background: $bg-gray;
+        padding-top: rem(80);
+        margin-top: rem(80);
+
+        .faq__wrapper {
+            margin-top: 0;
+        }
+    }
 
     &__wrapper {
         display: flex;
         flex-direction: column;
-        gap: rem(48);
+        gap: rem(28);
+        margin-top: rem(40)
     }
 
     &__title {
@@ -17,8 +25,15 @@
     }
 
     @include breakpoint-max($tablet-width) {
-        padding-top: rem(64);
+        &--bg {
+            padding-top: rem(64);
+            margin-top: rem(64);
+        }
+
         padding-bottom: rem(44);
-        margin-top: rem(64);
+
+        &__wrapper {
+            margin-top: rem(32);
+        }
     }
 }
