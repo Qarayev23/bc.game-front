@@ -1,5 +1,6 @@
 import Core from "./modules/Core.js";
 const core = new Core();
+import { truncateFunction } from "./modules/helpers/common.js";
 
 const fullscreenBtn = document.getElementById("fullscreenBtn");
 const minimizeBtn = document.getElementById("minimizeBtn");
@@ -12,12 +13,13 @@ demoBtn.addEventListener("click", () => {
     iframe.querySelector("iframe").src = "https://demogamesfree.pragmaticplay.net/gs2c/openGame.do?gameSymbol=vs20olympgate&lang=en&lobbyUrl=https://vavada.com/tr/games/exit&cashierUrl=https://vavada.com/tr/profile/deposit/&stylename=sfws_vavada&jurisdiction=99&isGameUrlApiCalled=true"
     iframe.classList.add("active");
     fullscreenElement.classList.add("active");
+    showIframeOverlay("fullscreen");
 });
 
 // FULLSCREEN
 fullscreenBtn.addEventListener("click", () => {
     fullscreenElement.classList.add("fullscreen");
-    
+    showIframeOverlay("active");
     if (fullscreenElement.requestFullscreen) {
         fullscreenElement.requestFullscreen();
     } else if (fullscreenElement.webkitRequestFullscreen) {
@@ -39,41 +41,48 @@ minimizeBtn.addEventListener("click", () => {
     }
 });
 
+// FULLSCREEN CHANGE
 document.addEventListener('fullscreenchange', () => {
     if (!document.fullscreenElement) {
         fullscreenElement.classList.remove("fullscreen");
     }
 });
 
-// GAME TRUNCATE TEXT
-const toggleBtn = document.querySelector('.uncover-btn');
-const truncateEl = document.querySelector('.truncate');
-const truncateInnerEl = document.querySelector('.truncate__inner');
-const truncateRect = truncateEl.getBoundingClientRect();
-let truncateInnerRect = truncateInnerEl.getBoundingClientRect();
-truncateEl.style.setProperty("--truncate-height", `${truncateRect.height}px`);
-
-toggleBtn.addEventListener('click', () => {
-    toggleBtn.classList.toggle('rotate');
-    if (truncateEl.classList.contains('truncate--expanded')) {
-        close();
+// MOBILE DEVICE DETECTION
+var hasTouchScreen = false;
+if ("maxTouchPoints" in navigator) {
+    hasTouchScreen = navigator.maxTouchPoints > 0;
+} else if ("msMaxTouchPoints" in navigator) {
+    hasTouchScreen = navigator.msMaxTouchPoints > 0;
+} else {
+    var mQ = window.matchMedia && matchMedia("(pointer:coarse)");
+    if (mQ && mQ.media === "(pointer:coarse)") {
+        hasTouchScreen = !!mQ.matches;
+    } else if ('orientation' in window) {
+        hasTouchScreen = true;
     } else {
-        open();
+        var UA = navigator.userAgent;
+        hasTouchScreen = (
+            /\b(BlackBerry|webOS|iPhone|IEMobile)\b/i.test(UA) ||
+            /\b(Android|Windows Phone|iPad|iPod)\b/i.test(UA)
+        );
     }
-});
-
-function open() {
-    truncateEl.classList.remove('truncate--line-clamped');
-    window.requestAnimationFrame(() => {
-        truncateInnerRect = truncateInnerEl.getBoundingClientRect();
-        truncateEl.style.setProperty("--truncate-height-expanded", `${truncateInnerRect.height}px`);
-        truncateEl.classList.add('truncate--expanded');
-    });
 }
 
-function close() {
-    truncateEl.classList.remove('truncate--expanded');
-    setTimeout(() => {
-        truncateEl.classList.add('truncate--line-clamped');
-    }, 300);
+// SHOW IFRAME OVERLAY
+const showIframeOverlay = (className) => {
+    if (fullscreenElement.classList.contains(className) && !JSON.parse(sessionStorage.getItem("isShowIframeOverlay")) && hasTouchScreen) {
+        sessionStorage.setItem("isShowIframeOverlay", "true");
+
+        setTimeout(() => {
+            document.querySelector(".iframe-box-overlay").classList.add("show");
+
+            setInterval(() => {
+                document.querySelector(".iframe-box-overlay").classList.remove("show");
+            }, 5000);
+        }, 5000);
+    }
 }
+
+// TRUNCATE GAME DESCRIPTION TEXT
+truncateFunction()

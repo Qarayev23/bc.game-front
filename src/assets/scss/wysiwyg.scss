@@ -29,6 +29,7 @@
   }
 
   .banner {
+
     h2,
     h3 {
       margin-top: 0;
@@ -51,13 +52,13 @@
 
   p:not([class])+p:not([class]),
   p:not([class])+ul:not([class]),
-  p:not([class])+ol:not([class]) ,
+  p:not([class])+ol:not([class]),
   ul:not([class])+ul:not([class]),
   ul:not([class])+p:not([class]),
   ul:not([class])+ol:not([class]),
   ol:not([class])+ol:not([class]),
-  ol:not([class])+p:not([class]) ,
-  ol:not([class])+ul:not([class]){
+  ol:not([class])+p:not([class]),
+  ol:not([class])+ul:not([class]) {
     margin-top: rem(16);
   }
 
@@ -152,6 +153,16 @@
 
     @include breakpoint-max($tablet-width) {
       margin-top: rem(24);
+    }
+  }
+
+  .img-editor {
+    width: 74%;
+    object-fit: contain;
+    margin: rem(24) 0;
+
+    @include breakpoint-max($tablet-width) {
+      width: 100%;
     }
   }
 }

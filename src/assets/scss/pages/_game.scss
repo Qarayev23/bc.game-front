@@ -120,6 +120,36 @@
             &.active {
                 display: block;
             }
+
+            &-overlay {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background: #1A1C20CC;
+                display: none;
+                align-items: center;
+                justify-content: center;
+
+                &__content {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: rem(8);
+                    width: rem(165);
+                    animation: bounce linear infinite 4s;
+
+                    p {
+                        @include r-14;
+                        color: white;
+                    }
+                }
+
+                &.show {
+                    display: flex;
+                }
+            }
         }
 
         &.fullscreen {
@@ -142,8 +172,8 @@
 
                 &--minimize {
                     display: block;
-                    bottom: rem(-60);
-                    right: rem(10);
+                    bottom: rem(-50);
+                    right: rem(15);
                 }
             }
         }
@@ -195,13 +225,13 @@
             height: rem(300);
 
             &.fullscreen {
-                padding: rem(40) 0;
+                padding: rem(60) 0;
 
                 .resize-btn {
                     &--minimize {
                         display: block;
-                        bottom: rem(-40);
-                        right: rem(15);
+                        bottom: rem(-30);
+                        right: rem(20);
                     }
                 }
             }
@@ -222,6 +252,22 @@
 
         @include breakpoint-max(450) {
             height: rem(214);
+        }
+    }
+
+    @keyframes bounce {
+        25% {
+            transform: translateY(-20%);
+        }
+
+        40% {
+            transform: translateY(-3%);
+        }
+
+        0%,
+        60%,
+        100% {
+            transform: translateY(0);
         }
     }
 }
