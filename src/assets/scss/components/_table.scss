@@ -141,12 +141,136 @@
     }
   }
 
+  &--game {
+    overflow-x: auto;
+    padding: 0 !important;
+
+    table {
+      width: 100%;
+
+      tbody {
+        padding: rem(24);
+        display: flex;
+
+        tr {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          gap: rem(32);
+
+          td {
+            margin-top: rem(18);
+            height: fit-content;
+
+            &:first-of-type {
+              margin-top: 0;
+              white-space: nowrap;
+            }
+
+            &:last-of-type {
+              max-width: rem(240);
+              flex-grow: 1;
+
+              .g-btn {
+                width: 100%;
+                margin-top: 0;
+                white-space: nowrap;
+              }
+            }
+          }
+        }
+      }
+
+      .rating {
+        display: flex;
+        gap: rem(8);
+
+        .star-rating {
+          background-image: url("/svg/star-empty.svg");
+        }
+
+        .star-rating .star-value {
+          background-image: url("/svg/star-full.svg");
+        }
+
+        &__overage {
+          @include b-14;
+          color: white;
+        }
+
+        &__votes {
+          @include r-14;
+          color: $gray;
+          margin-left: rem(4);
+        }
+      }
+
+      .table-game-img {
+        width: rem(80);
+        height: rem(80);
+        border-radius: rem(8);
+      }
+
+      .table-game-title {
+        @include b-20;
+        color: white;
+        margin-bottom: rem(4);
+        display: block;
+      }
+
+      .table-cell {
+        display: flex;
+        flex-direction: column;
+        gap: rem(8);
+      }
+
+      .table-title {
+        @include b-16;
+        color: white;
+      }
+
+      .table-text {
+        @include r-14;
+        color: $gray;
+      }
+    }
+  }
+
   @include breakpoint-max($desktop-width) {
     table {
       thead {
         tr {
           th {
             padding-right: rem(20);
+          }
+        }
+      }
+    }
+
+    &--game {
+      table {
+        tbody {
+          tr {
+            flex-wrap: wrap;
+            justify-content: flex-start;
+
+            td {
+              width: calc(50% - rem(32));
+              margin-top: 0;
+
+              &:first-of-type {
+                width: 100%;
+              }
+
+              &:last-of-type {
+                width: 100%;
+                max-width: 100%;
+
+                .g-btn {
+                  width: 100%;
+                }
+              }
+            }
           }
         }
       }
@@ -195,6 +319,31 @@
               &:first-of-type {
                 padding-left: rem(24);
                 gap: rem(12);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &--game {
+      table {
+        tbody {
+          tr {
+            gap: rem(16);
+
+            td {
+              &:first-of-type {
+                margin-bottom: rem(8);
+                white-space: initial;
+              }
+
+              &:last-of-type {
+                margin-top: rem(8);
+              }
+
+              .rating {
+                flex-wrap: wrap;
               }
             }
           }

@@ -127,6 +127,7 @@
     @include breakpoint-max(1300) {
         &-img {
             width: rem(991);
+            top: rem(70);
         }
     }
 

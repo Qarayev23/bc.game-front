@@ -3,7 +3,14 @@
     box-shadow: 0px 0px 50px 0px #11141580;
     padding: rem(10) 0;
     position: relative;
-    z-index: 2;
+    z-index: 99;
+
+    &.fix-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
 
     .navbar {
         display: flex;
@@ -31,11 +38,33 @@
 
         &__item {
             position: relative;
+            cursor: pointer;
+            border-radius: rem(4);
+            transition: 0.3s;
+
+            &::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: rem(-10);
+                width: 100%;
+                height: rem(10);
+                background: transparent;
+            }
 
             @include breakpoint-min($desktop-width) {
                 &:hover>.dropdown__list {
                     display: flex;
                 }
+            }
+
+            &:hover {
+                color: white;
+                background: rgba(255, 255, 255, 0.10);
+            }
+
+            &--lang {
+                display: none;
             }
         }
 
@@ -69,14 +98,6 @@
         }
     }
 
-    .register-btn {
-        padding: rem(12) rem(23);
-
-        @include breakpoint-max($desktop-width) {
-            padding: rem(8) rem(16);
-        }
-    }
-
     .sign-in-mob {
         svg {
             width: rem(20);
@@ -101,6 +122,7 @@
             border-radius: rem(4);
             @include r-14;
             width: 100%;
+            pointer-events: none;
 
             svg {
                 width: rem(15);
@@ -108,6 +130,44 @@
                 transform: translateY(rem(2));
                 stroke: $gray;
                 transition: 0.3s;
+            }
+        }
+
+        &__list {
+            flex-direction: column;
+            border-radius: rem(8);
+
+            @include breakpoint-min($desktop-width) {
+                display: none;
+                animation: fade 0.2s linear;
+                background-color: $black;
+                padding: rem(8);
+                gap: rem(6);
+                min-width: rem(188);
+                position: absolute;
+                left: 0;
+                top: calc(100% + rem(6));
+
+                .dropdown__btn {
+                    color: white;
+
+                    svg {
+                        transform: rotate(270deg);
+                    }
+                }
+            }
+        }
+
+        &__item {
+            position: relative;
+            border-radius: rem(4);
+
+            @include breakpoint-min($desktop-width) {
+                &:hover>.dropdown__list {
+                    display: flex;
+                    left: calc(100% + rem(16));
+                    top: 0;
+                }
             }
 
             &:hover {
@@ -118,179 +178,144 @@
                     stroke: white;
                 }
             }
-        }
 
-        &__list {
-            position: absolute;
-            top: 100%;
-            left: rem(-20);
-            min-width: rem(200);
-            flex-direction: column;
-            background-color: #393B40;
-            border-radius: rem(5);
-
-            @include breakpoint-min($desktop-width) {
-                display: none;
-                animation: fade 0.2s linear;
-
-                .dropdown__btn {
-                    svg {
-                        transform: rotate(270deg);
-                    }
-                }
-            }
-        }
-
-        &__item {
-            position: relative;
-
-            @include breakpoint-min($desktop-width) {
-                &:hover>.dropdown__list {
-                    display: flex;
-                    top: 0;
-                    left: 100%;
-                    border-top-left-radius: 0;
-                    border-bottom-left-radius: 0;
-                }
+            &::after {
+                content: "";
+                position: absolute;
+                right: rem(-30);
+                top: 0;
+                height: 100%;
+                width: rem(30);
+                background: transparent;
             }
         }
 
         &__link {
-            color: $gray;
+            color: white;
             padding: rem(12);
             border-radius: rem(4);
             @include r-14;
+            width: 100%;
 
             &:hover {
-                color: white;
-                background: rgba(255, 255, 255, 0.10);
+                background: #FFFFFF1A;
             }
         }
     }
 
-    .lang-dropdown {
-        position: relative;
+    .lang-btn {
+        display: flex;
+        align-items: center;
+        gap: rem(8);
+        padding: rem(12);
+        border-radius: rem(4);
+        @include r-14;
+        color: $gray;
 
-        &__btn {
-            display: flex;
-            align-items: center;
-            gap: rem(8);
-            padding: rem(12);
-            border-radius: rem(4);
-            @include r-14;
-            color: $gray;
-
-            img {
-                width: rem(20);
-                height: rem(20);
-            }
-        }
-
-        &__list {
-            display: none;
-            flex-direction: column;
-            position: absolute;
-            top: 100%;
-            background-color: #393b40;
-            border-radius: rem(4);
-            animation: fade 0.2s linear;
-        }
-
-        &__link {
-            display: flex;
-            align-items: center;
-            gap: rem(8);
-            padding: rem(12);
-            @include r-14;
-            color: $gray;
-
-            &:hover {
-                color: white;
-                background: rgba(255, 255, 255, 0.10);
-            }
-
-            img {
-                width: rem(20);
-                height: rem(20);
-                border-radius: rem(5);
-                object-fit: cover;
-            }
+        img {
+            width: rem(20);
+            height: rem(20);
         }
 
         @include breakpoint-min($desktop-width) {
-            &:hover>.lang-dropdown__list {
-                display: flex;
-            }
-
-            &__btn {
-                &:hover {
-                    color: white;
-                    background: rgba(255, 255, 255, 0.10);
-                }
+            &:hover {
+                color: white;
+                background: rgba(255, 255, 255, 0.10);
             }
         }
-    }
-
-    .mob-navbar {
-        position: fixed;
-        bottom: -150%;
-        left: 0;
-        background: $bg-black;
-        width: 100%;
-        height: calc(100vh - rem(56));
-        overflow-y: auto;
-        padding-bottom: rem(15);
-        transition: 0.3s;
     }
 
     @include breakpoint-max($desktop-width) {
-        .mob-navbar {
-            &.active {
-                bottom: 0;
-            }
-        }
-
         .navbar {
             &__logo {
                 width: rem(120);
             }
 
             &__list {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                background: $bg-black;
+                width: 100%;
+                height: calc(100vh - rem(56));
+                overflow-y: auto;
+                overflow-x: hidden;
+                padding-bottom: rem(15);
                 flex-direction: column;
+                gap: 0;
+                padding: rem(44) rem(40) 0 rem(40);
+                transform: translateY(-100vh);
+                transition: 0.3s;
+
+                &.active {
+                    transform: translateY(0);
+                }
             }
 
             &__item {
                 width: 100%;
+                padding: 0;
+                border-bottom: 1px solid #FFFFFF33;
+                border-radius: 0;
+
+                &:hover {
+                    color: initial;
+                    background: initial;
+                }
+
+                &--lang {
+                    display: flex;
+                    background-color: $dark;
+                    padding: 0;
+
+                    .lang-btn {
+                        padding: rem(12) rem(40);
+                    }
+                }
+
+                &:first-of-type {
+                    border: 0;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                }
+
+                &:last-of-type {
+                    border: 0;
+                }
             }
 
             &__link {
                 text-align: start;
-                padding: rem(12) rem(16);
-                border-radius: 0;
+                padding: rem(15) 0;
+                width: 100%;
+
+                &:hover {
+                    background: initial;
+                }
             }
         }
 
         .dropdown {
             &__list {
-                position: static;
                 border-radius: 0;
                 background: $bg-black;
 
                 .dropdown__btn {
-                    padding-left: rem(32);
+                    padding-left: rem(16);
                 }
 
                 &--sub {
                     .dropdown__link {
-                        padding-left: rem(48);
+                        padding-left: rem(32);
                     }
                 }
             }
 
             &__btn {
-                padding-left: rem(16);
-                padding-right: rem(16);
+                padding: rem(15) 0;
                 color: white;
+                pointer-events: initial;
 
                 svg {
                     stroke: white;
@@ -305,32 +330,54 @@
                         transform: rotate(0);
                     }
                 }
-            }
 
-            &__link {
-                padding: rem(12) rem(32);
-            }
-        }
+                &:hover {
+                    color: white;
 
-        .lang-dropdown {
-            background-color: $black;
-
-            &__list {
-                &.active {
-                    display: block;
-                    width: 100%;
-                    z-index: 1;
-                    border-top: 1px solid black;
-
-                    .lang-dropdown__link {
-                        padding: rem(12) rem(16);
+                    svg {
+                        stroke: white;
                     }
                 }
             }
 
-            &__btn {
-                width: 100%;
-                padding: rem(12) rem(16);
+            &__item {
+                &:hover {
+                    color: initial;
+                    background: initial;
+                }
+            }
+
+            &__link {
+                padding: rem(15) rem(16);
+                color: $gray;
+
+                &:hover {
+                    background: initial;
+                    color: white;
+                }
+            }
+        }
+
+        .lang-btn {
+            background-color: $black;
+            width: 100%;
+            padding: rem(12) rem(16);
+            border-radius: 0;
+        }
+    }
+
+    @include breakpoint-max($tablet-width) {
+        .navbar {
+            &__list {
+                padding: rem(44) rem(16) 0 rem(16);
+            }
+
+            &__item {
+                &--lang {
+                    .lang-btn {
+                        padding: rem(12) rem(16);
+                    }
+                }
             }
         }
     }
@@ -349,6 +396,8 @@
 .hamburger-btn {
     height: rem(16);
     width: rem(23);
+    flex-shrink: 0;
+    margin-left: rem(8);
     cursor: pointer;
     transform: translateY(rem(4));
 

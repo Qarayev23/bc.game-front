@@ -1,3 +1,4 @@
+import rater from "rater-js";
 import Core from "./modules/Core.js";
 const core = new Core();
 import { truncateFunction } from "./modules/helpers/common.js";
@@ -83,6 +84,18 @@ const showIframeOverlay = (className) => {
         }, 5000);
     }
 }
+
+// RATING STAR
+const myRater = rater({
+    starSize: 19,
+    rating: 4.5,
+    element: document.querySelector("#rater"),
+    rateCallback: function rateCallback(rating, done) {
+        console.log(rating);
+        this.setRating(rating);
+        done();
+    }
+});
 
 // TRUNCATE GAME DESCRIPTION TEXT
 truncateFunction()
