@@ -238,7 +238,7 @@
                 left: 0;
                 background: $bg-black;
                 width: 100%;
-                height: calc(100vh - rem(56));
+                height: calc(100% - rem(56));
                 overflow-y: auto;
                 overflow-x: hidden;
                 padding-bottom: rem(15);
@@ -283,6 +283,7 @@
 
                 &:last-of-type {
                     border: 0;
+                    margin-bottom: 400px;
                 }
             }
 
