@@ -55,7 +55,7 @@ document.querySelectorAll(".hamburger-btn").forEach(element => {
 let scrollBtn = document.querySelector(".scroll-top");
 
 window.onscroll = () => {
-  if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+  if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
     scrollBtn.style.display = "flex";
   } else {
     scrollBtn.style.display = "none";

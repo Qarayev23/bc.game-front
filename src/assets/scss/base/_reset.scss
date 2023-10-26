@@ -25,6 +25,7 @@ body {
   background-color: $bg-black;
   position: relative;
   overflow-y: auto;
+  min-height: 100vh;
 }
 
 @media screen and (min-width: 1441px) {
