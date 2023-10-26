@@ -25,6 +25,8 @@ body {
   background-color: $bg-black;
   position: relative;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 @media screen and (min-width: 1441px) {
