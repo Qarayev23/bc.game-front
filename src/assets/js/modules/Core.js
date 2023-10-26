@@ -47,7 +47,6 @@ document.querySelectorAll(".hamburger-btn").forEach(element => {
     element.classList.toggle("active")
     document.querySelector(".navbar__list").classList.toggle("active")
     document.querySelector("body").classList.toggle("overflow-hidden")
-    window.scrollTo(0, 0)
   }
 });
 
