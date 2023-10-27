@@ -6,7 +6,7 @@
     gap: rem(30);
     margin: rem(20) 0;
     width: fit-content;
-    
+
     &__item {
         color: $gray;
         @include r-14;
@@ -42,5 +42,11 @@
         &:hover {
             color: white;
         }
+    }
+
+    &-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
 }

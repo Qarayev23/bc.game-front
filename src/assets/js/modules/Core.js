@@ -1,4 +1,3 @@
-import * as bootstrap from 'bootstrap';
 import "/src/assets/scss/main.scss";
 
 // Libraries
@@ -46,7 +45,7 @@ document.querySelectorAll(".hamburger-btn").forEach(element => {
   element.onclick = function () {
     element.classList.toggle("active")
     document.querySelector(".navbar__list").classList.toggle("active")
-    document.querySelector("body").classList.toggle("overflow-hidden")
+    document.querySelector("body").classList.toggle("hidden")
   }
 });
 
@@ -64,3 +63,21 @@ window.onscroll = () => {
 scrollBtn.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
+
+// DROPDOWN
+const accBtn = document.getElementsByClassName("dropdown__btn");
+let i;
+
+for (i = 0; i < accBtn.length; i++) {
+  accBtn[i].addEventListener("click", function () {
+    this.classList.toggle("show");
+    var panel = this.nextElementSibling;
+    var parent = this.parentElement.parentElement;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight / 16 + "rem";
+      parent.style.maxHeight = parseInt(parent.style.maxHeight) + panel.scrollHeight + 12 / 16 + "rem";
+    }
+  });
+}

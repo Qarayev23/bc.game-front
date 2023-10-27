@@ -91,3 +91,30 @@ export function truncateFunction() {
     }, 300);
   }
 }
+
+export function accordionFunction() {
+  const accBtn = document.getElementsByClassName("accordion__button");
+  let i;
+
+  for (let i = 0; i < accBtn.length; i++) {
+    accBtn[i].addEventListener("click", function () {
+      for (let j = 0; j < accBtn.length; j++) {
+        accBtn[j].classList.remove("show");
+        if (j != i) {
+          accBtn[j].nextElementSibling.style.maxHeight = null;
+        }
+      }
+      this.classList.add("show");
+      const panel = this.nextElementSibling;
+      if (panel.style.maxHeight) {
+        panel.style.maxHeight = null;
+      } else {
+        panel.style.maxHeight = panel.scrollHeight / 16 + "rem";
+      }
+    });
+  }
+
+  window.onload = function () {
+    accBtn[0].click()
+  }
+}

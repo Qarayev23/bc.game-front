@@ -1,5 +1,5 @@
 import Swiper, { Pagination, Navigation, Autoplay } from "swiper";
-import { truncateFunction } from "./modules/helpers/common.js";
+import { accordionFunction, truncateFunction } from "./modules/helpers/common.js";
 import "swiper/css";
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
@@ -16,7 +16,6 @@ const heroSwiper = new Swiper("#heroSwiper", {
         delay: 3000,
         disableOnInteraction: false,
     },
-    loop: true,
     speed: 1500,
     navigation: {
         nextEl: ".hero__slide .swiper-button-next",
@@ -54,6 +53,7 @@ const bonusSwiper = new Swiper("#bonusSwiper", {
     breakpoints: {
         1200: {
             slidesPerView: 4,
+            spaceBetween: 20,
         },
         768: {
             spaceBetween: 20,
@@ -93,3 +93,6 @@ const registerProcessSwiper = new Swiper("#registerProcess", {
 
 // HERO TRUNCATE TEXT
 truncateFunction();
+
+// ACCORDION
+accordionFunction();

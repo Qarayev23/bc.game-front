@@ -15,6 +15,8 @@
 
     .navbar {
         display: flex;
+        align-items: center;
+        justify-content: space-between;
         padding: 0;
         gap: rem(15);
         flex-wrap: nowrap;
@@ -57,11 +59,14 @@
                 &:hover>.dropdown__list {
                     display: flex;
                 }
-            }
 
-            &:hover {
-                color: white;
-                background: rgba(255, 255, 255, 0.10);
+                &:hover {
+                    background: rgba(255, 255, 255, 0.10);
+
+                    .dropdown__btn {
+                        color: white;
+                    }
+                }
             }
 
             &--lang {
@@ -97,9 +102,21 @@
                 white-space: nowrap;
             }
         }
+
+        &__mob {
+            display: flex;
+            align-items: center;
+            gap: rem(16);
+
+            @include breakpoint-min($desktop-width) {
+                display: none;
+            }
+        }
     }
 
     .sign-in-mob {
+        margin-top: rem(4);
+
         svg {
             width: rem(20);
             height: rem(20);
@@ -198,6 +215,10 @@
             @include r-14;
             width: 100%;
 
+            @include breakpoint-min($desktop-width) {
+                white-space: nowrap;
+            }
+
             &:hover {
                 background: #FFFFFF1A;
             }
@@ -226,6 +247,71 @@
         }
     }
 
+    .hamburger-btn {
+        height: rem(16);
+        width: rem(23);
+        flex-shrink: 0;
+        margin-left: rem(8);
+        cursor: pointer;
+        transform: translateY(rem(4));
+    
+        &:hover span {
+            background: $gray;
+    
+            &::before,
+            &::after {
+                background: $gray;
+            }
+        }
+    
+        span,
+        span::before,
+        span::after {
+            background: white;
+            content: "";
+            position: absolute;
+            width: rem(23);
+            height: rem(2);
+            margin-top: rem(4);
+            transform: rotateY(180deg);
+            transition: .3s ease-in-out;
+            border-radius: rem(20);
+    
+            &:hover {
+                background: $gray;
+            }
+        }
+    
+        span {
+            &::before {
+                margin-top: rem(-7);
+            }
+    
+            &::after {
+                margin-top: rem(7);
+            }
+        }
+    
+        &.active {
+            transform: rotateY(180deg) translateY(0.25rem);
+            transition: .3s ease-in-out;
+    
+            span {
+                background: transparent;
+    
+                &::before {
+                    margin-top: 0;
+                    transform: rotate(45deg);
+                }
+    
+                &::after {
+                    margin-top: 0;
+                    transform: rotate(-45deg);
+                }
+            }
+        }
+    }
+
     @include breakpoint-max($desktop-width) {
         .navbar {
             &__logo {
@@ -238,7 +324,7 @@
                 left: 0;
                 background: $bg-black;
                 width: 100%;
-                height: calc(100% - rem(56));
+                height: calc(100% - rem(64));
                 overflow-y: auto;
                 overflow-x: hidden;
                 padding-bottom: rem(15);
@@ -266,7 +352,7 @@
 
                 &--lang {
                     display: flex;
-                    background-color: $dark;
+                    background-color: $black;
                     padding: 0;
 
                     .lang-btn {
@@ -295,12 +381,19 @@
                     background: initial;
                 }
             }
+
+            &__right {
+                display: none;
+            }
         }
 
         .dropdown {
             &__list {
                 border-radius: 0;
                 background: $bg-black;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.2s ease-out;
 
                 .dropdown__btn {
                     padding-left: rem(16);
@@ -315,20 +408,20 @@
 
             &__btn {
                 padding: rem(15) 0;
-                color: white;
+                color: $gray;
                 pointer-events: initial;
 
                 svg {
-                    stroke: white;
-                    transform: rotate(180deg);
+                    stroke: $gray;
+                    transform: rotate(0);
                 }
 
-                &.collapsed {
-                    color: $gray;
+                &.show {
+                    color: white;
 
                     svg {
-                        stroke: $gray;
-                        transform: rotate(0);
+                        stroke: white;
+                        transform: rotate(180deg);
                     }
                 }
 
@@ -371,6 +464,7 @@
         .navbar {
             &__list {
                 padding: rem(44) rem(16) 0 rem(16);
+                height: calc(100% - rem(56));
             }
 
             &__item {
@@ -392,67 +486,4 @@
     to {
         opacity: 1;
     }
-}
-
-.hamburger-btn {
-    height: rem(16);
-    width: rem(23);
-    flex-shrink: 0;
-    margin-left: rem(8);
-    cursor: pointer;
-    transform: translateY(rem(4));
-
-    &:hover span {
-        background: $gray;
-
-        &::before,
-        &::after {
-            background: $gray;
-        }
-    }
-}
-
-.hamburger-btn span,
-.hamburger-btn span::before,
-.hamburger-btn span::after {
-    background: white;
-    content: "";
-    position: absolute;
-    width: rem(23);
-    height: rem(2);
-    margin-top: rem(4);
-    transform: rotateY(180deg);
-    transition: .3s ease-in-out;
-    border-radius: rem(20);
-
-    &:hover {
-        background: $gray;
-    }
-}
-
-.hamburger-btn span::before {
-    margin-top: rem(-7);
-}
-
-.hamburger-btn span::after {
-    margin-top: rem(7);
-}
-
-.hamburger-btn.active span {
-    background: transparent;
-}
-
-.hamburger-btn.active span::before {
-    margin-top: 0;
-    transform: rotate(45deg);
-}
-
-.hamburger-btn.active span::after {
-    margin-top: 0;
-    transform: rotate(-45deg);
-}
-
-.hamburger-btn.active {
-    transform: rotateY(180deg) translateY(0.25rem);
-    transition: .3s ease-in-out;
 }

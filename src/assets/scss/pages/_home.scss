@@ -1,6 +1,7 @@
 .hero {
     position: relative;
     padding-bottom: rem(30);
+    margin-bottom: rem(80);
 
     &__bg {
         background: linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0) 100%);
@@ -138,6 +139,30 @@
             margin-bottom: rem(12);
         }
 
+        &__bg {
+            display: none;
+        }
+
+        &-img {
+            width: 100%;
+            height: rem(1000);
+            top: rem(-50);
+            z-index: initial;
+
+            &--mob {
+                display: block;
+            }
+
+            &--desktop {
+                display: none;
+            }
+        }
+
+        &__content {
+            width: 100%;
+            margin-top: rem(390);
+        }
+
         .swiper-button-next,
         .swiper-button-prev {
             top: initial;
@@ -155,37 +180,11 @@
         .swiper-pagination {
             bottom: rem(-40) !important;
         }
-
-        &-img {
-            &--mob {
-                display: block;
-            }
-
-            &--desktop {
-                display: none;
-            }
-        }
-    }
-
-    @include breakpoint-max($desktop-width) {
-        &__bg {
-            display: none;
-        }
-
-        &-img {
-            width: 100%;
-            height: rem(1000);
-            top: rem(-50);
-            z-index: initial;
-        }
-
-        &__content {
-            width: 100%;
-            margin-top: rem(390);
-        }
     }
 
     @include breakpoint-max($tablet-width) {
+        margin-bottom: rem(64);
+        
         &__footer {
             flex-direction: column;
             margin-top: rem(24);
@@ -227,67 +226,6 @@
 
         &__content {
             margin-top: rem(200);
-        }
-    }
-}
-
-.quick-links {
-    &__list {
-        display: flex;
-        gap: rem(16);
-        flex-wrap: wrap;
-    }
-
-    &__link {
-        color: $gray;
-        @include r-14;
-        border-radius: rem(4);
-        display: flex;
-        padding: rem(12);
-        align-items: center;
-        background-color: $bg-gray;
-
-        &:hover {
-            background: rgba(255, 255, 255, 0.10);
-            color: white;
-        }
-    }
-
-    &__title {
-        color: white;
-        @include m-20;
-        margin-bottom: rem(16);
-    }
-}
-
-.services {
-    display: flex;
-    flex-direction: column;
-    gap: rem(24);
-    position: relative;
-
-    &__content {
-        width: 59%;
-    }
-
-    &__decor {
-        position: absolute;
-        right: 0;
-        top: rem(-60);
-        z-index: -1;
-        width: 39%;
-    }
-
-    @include breakpoint-max($desktop-width) {
-        &__decor {
-            position: static;
-            width: 100%;
-            height: rem(331);
-        }
-
-        &__content {
-            width: 100%;
-            order: 1;
         }
     }
 }

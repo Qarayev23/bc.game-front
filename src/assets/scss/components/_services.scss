@@ -1,0 +1,31 @@
+.services {
+    display: flex;
+    flex-direction: column;
+    gap: rem(24);
+    position: relative;
+
+    &__content {
+        width: 59%;
+    }
+
+    &__decor {
+        position: absolute;
+        right: 0;
+        top: rem(-60);
+        z-index: -1;
+        width: 39%;
+    }
+
+    @include breakpoint-max($desktop-width) {
+        &__decor {
+            position: static;
+            width: 100%;
+            height: rem(331);
+        }
+
+        &__content {
+            width: 100%;
+            order: 1;
+        }
+    }
+}

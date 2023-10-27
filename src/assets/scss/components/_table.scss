@@ -94,6 +94,7 @@
   }
 
   &--full {
+    overflow-x: auto;
     table {
       width: 100%;
 
@@ -193,6 +194,10 @@
           background-image: url("/svg/star-full.svg");
         }
 
+        &__result {
+          display: flex;
+        }
+
         &__overage {
           @include b-14;
           color: white;
@@ -203,6 +208,12 @@
           color: $gray;
           margin-left: rem(4);
         }
+      }
+
+      .table-game-holder {
+        display: flex;
+        align-items: center;
+        gap: rem(16);
       }
 
       .table-game-img {
@@ -277,13 +288,7 @@
     }
   }
 
-  @include breakpoint-max($desktop-sm-width) {
-    overflow-x: auto;
-  }
-
   @include breakpoint-max($tablet-width) {
-    padding-bottom: rem(12);
-
     &--sm {
       table {
         tbody {
@@ -296,6 +301,8 @@
     }
 
     &--full {
+      padding-bottom: rem(12);
+
       table {
         thead {
           tr {

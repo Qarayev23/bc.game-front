@@ -28,6 +28,12 @@
     }
   }
 
+  h4:not([class]) {
+    color: white;
+    @include m-20;
+    margin-bottom: rem(16);
+  }
+
   .banner {
 
     h2,
@@ -144,7 +150,7 @@
     color: $green;
 
     &:hover {
-      text-decoration: underline !important;
+      text-decoration: underline;
     }
   }
 

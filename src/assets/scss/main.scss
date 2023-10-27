@@ -1,6 +1,4 @@
 @charset "utf-8";
-@import "bootstrap/scss/bootstrap";
-
 /* Utilities */
 
 @import "utilities/variables";
@@ -56,6 +54,10 @@
 @import "components/uncover-btn";
 
 @import "components/scroll-top";
+
+@import "components/quick-links";
+
+@import "components/services";
 
 /* Layouts */
 

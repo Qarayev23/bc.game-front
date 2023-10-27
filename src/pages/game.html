@@ -1,7 +1,7 @@
 <extends src="layouts/base.html">
     <block name="content">
         <div class="g-container">
-            <div class="d-flex justify-content-between align-items-center">
+            <div class="breadcrumb-wrapper">
                 <ul class="breadcrumb">
                     <li class="breadcrumb__item">
                         <a href="/" class="breadcrumb__link">Home</a>
@@ -86,13 +86,13 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    <div class="d-flex align-items-center gap-3">
+                                    <div class="table-game-holder">
                                         <img src="/img/table-img.png" class="table-game-img" alt="">
                                         <div>
                                             <span class="table-game-title">100% bonus up to €100</span>
                                             <div class="rating">
                                                 <div id="rater"></div>
-                                                <div class="d-flex">
+                                                <div class="rating__result">
                                                     <span class="rating__overage">4.5</span>
                                                     <span class="rating__votes">(4562 votes)</span>
                                                 </div>
@@ -472,87 +472,78 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <section class="faq faq--bg wysiwyg">
-            <div class="g-container">
-                <div class="faq__wrapper">
-                    <div class="faq__content">
-                        <h2 class="faq__title">Frequently Asked Questions</h2>
-                        <div class="accordion" id="FAQAccordion">
-                            <div class="accordion-item">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    What if I forget my password?
-                                    <span class="accordion-button__icon">
-                                        <img src="/svg/acc-plus.svg" class="plus-icon" alt="">
-                                        <img src="/svg/acc-minus.svg" alt="" class="minus-icon">
-                                    </span>
-                                </button>
-                                <div id="collapseOne" class="accordion-collapse collapse show"
-                                    data-bs-parent="#FAQAccordion">
-                                    <div class="accordion-body">
-                                        <p>
-                                            If you forget your password at BC.Game, there's an easy way to reset it.
-                                            Just
-                                            click
-                                            the
-                                            "Forgot your password?" link and enter your email or phone number to get
-                                            instructions on
-                                            how
-                                            to reset the password.
-                                        </p>
+                <div class="faq faq--bg">
+                    <div class="faq__wrapper">
+                        <div class="faq__content">
+                            <h2>Frequently Asked Questions</h2>
+                            <div class="accordion">
+                                <div class="accordion__item">
+                                    <button class="accordion__button" type="button">
+                                        What if I forget my password?
+                                        <span class="accordion__icon">
+                                            <img src="/svg/acc-plus.svg" class="plus-icon" alt="">
+                                            <img src="/svg/acc-minus.svg" alt="" class="minus-icon">
+                                        </span>
+                                    </button>
+                                    <div class="accordion__collapse">
+                                        <div class="accordion__body">
+                                            <p>
+                                                If you forget your password at BC.Game, there's an easy way to reset it.
+                                                Just
+                                                click
+                                                the
+                                                "Forgot your password?" link and enter your email or phone number to get
+                                                instructions on
+                                                how
+                                                to reset the password.
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="accordion-item">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    How do I become a VIP?
-                                    <span class="accordion-button__icon">
-                                        <img src="/svg/acc-plus.svg" class="plus-icon" alt="">
-                                        <img src="/svg/acc-minus.svg" alt="" class="minus-icon">
-                                    </span>
-                                </button>
-                                <div id="collapseTwo" class="accordion-collapse collapse"
-                                    data-bs-parent="#FAQAccordion">
-                                    <div class="accordion-body">
-                                        <p>
-                                            If you forget your password at BC.Game, there's an easy way to reset it.
-                                            Just
-                                            click
-                                            the
-                                            "Forgot your password?" link and enter your email or phone number to get
-                                            instructions on
-                                            how
-                                            to reset the password.
-                                        </p>
+                                <div class="accordion__item">
+                                    <button class="accordion__button" type="button">
+                                        How do I become a VIP?
+                                        <span class="accordion__icon">
+                                            <img src="/svg/acc-plus.svg" class="plus-icon" alt="">
+                                            <img src="/svg/acc-minus.svg" alt="" class="minus-icon">
+                                        </span>
+                                    </button>
+                                    <div class="accordion__collapse">
+                                        <div class="accordion__body">
+                                            <p>
+                                                If you forget your password at BC.Game, there's an easy way to reset it.
+                                                Just
+                                                click
+                                                the
+                                                "Forgot your password?" link and enter your email or phone number to get
+                                                instructions on
+                                                how
+                                                to reset the password.
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="accordion-item">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    What is BC Swap?
-                                    <span class="accordion-button__icon">
-                                        <img src="/svg/acc-plus.svg" class="plus-icon" alt="">
-                                        <img src="/svg/acc-minus.svg" alt="" class="minus-icon">
-                                    </span>
-                                </button>
-                                <div id="collapseThree" class="accordion-collapse collapse"
-                                    data-bs-parent="#FAQAccordion">
-                                    <div class="accordion-body">
-                                        <p>
-                                            If you forget your password at BC.Game, there's an easy way to reset it.
-                                            Just
-                                            click
-                                            the
-                                            "Forgot your password?" link and enter your email or phone number to get
-                                            instructions on
-                                            how
-                                            to reset the password.
-                                        </p>
+                                <div class="accordion__item">
+                                    <button class="accordion__button" type="button">
+                                        What is BC Swap?
+                                        <span class="accordion__icon">
+                                            <img src="/svg/acc-plus.svg" class="plus-icon" alt="">
+                                            <img src="/svg/acc-minus.svg" alt="" class="minus-icon">
+                                        </span>
+                                    </button>
+                                    <div class="accordion__collapse">
+                                        <div class="accordion__body">
+                                            <p>
+                                                If you forget your password at BC.Game, there's an easy way to reset it.
+                                                Just
+                                                click
+                                                the
+                                                "Forgot your password?" link and enter your email or phone number to get
+                                                instructions on
+                                                how
+                                                to reset the password.
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

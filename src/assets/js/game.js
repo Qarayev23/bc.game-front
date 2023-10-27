@@ -1,7 +1,7 @@
 import rater from "rater-js";
 import Core from "./modules/Core.js";
 const core = new Core();
-import { truncateFunction } from "./modules/helpers/common.js";
+import { accordionFunction, truncateFunction } from "./modules/helpers/common.js";
 
 const fullscreenBtn = document.getElementById("fullscreenBtn");
 const minimizeBtn = document.getElementById("minimizeBtn");
@@ -11,7 +11,7 @@ const fullscreenElement = document.querySelector(".game-box");
 
 // OPEN DEMO GAME
 demoBtn.addEventListener("click", () => {
-    iframe.querySelector("iframe").src = "https://demogamesfree.pragmaticplay.net/gs2c/openGame.do?gameSymbol=vs20olympgate&lang=en&lobbyUrl=https://vavada.com/tr/games/exit&cashierUrl=https://vavada.com/tr/profile/deposit/&stylename=sfws_vavada&jurisdiction=99&isGameUrlApiCalled=true"
+    iframe.querySelector("iframe").src = "https://cw.playngonetwork.com/Casino/IframedView?pid=565&amp;gid=&amp;gameId=310&amp;lang=en_GB&amp;practice=1&amp;channel=desktop&amp;div=egamings_game_frame&amp;width=100%&amp;height=100%&amp;user=&amp;password=&amp;ctx=&amp;demo=2&amp;brand=&amp;lobby=&amp;rccurrentsessiontime=0&amp;rcintervaltime=0&amp;rcaccounthistoryurl=&amp;rccontinueurl=&amp;rcexiturl=&amp;rchistoryurlmode=&amp;autoplaylimits=0&amp;autoplayreset=0&amp;callback=&amp;rcmga=&amp;resourcelevel=0&amp;hasjackpots=False&amp;country=&amp;region=&amp;pauseplay=&amp;playlimit=&amp;selftest=&amp;sessiontime=&amp;coreweburl=https://cw.playngonetwork.com/&amp;showpoweredby=True"
     iframe.classList.add("active");
     fullscreenElement.classList.add("active");
     showIframeOverlay("fullscreen");
@@ -99,3 +99,6 @@ const myRater = rater({
 
 // TRUNCATE GAME DESCRIPTION TEXT
 truncateFunction()
+
+// ACCORDION
+accordionFunction();

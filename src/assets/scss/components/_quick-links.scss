@@ -1,0 +1,23 @@
+.quick-links {
+    display: flex;
+    gap: rem(16);
+    flex-wrap: wrap;
+
+    li {
+        a {
+            color: $gray !important;
+            @include r-14;
+            border-radius: rem(4);
+            display: flex;
+            padding: rem(12);
+            align-items: center;
+            background-color: $bg-gray;
+
+            &:hover {
+                background: rgba(255, 255, 255, 0.10);
+                color: white !important;
+                text-decoration: none !important;
+            }
+        }
+    }
+}

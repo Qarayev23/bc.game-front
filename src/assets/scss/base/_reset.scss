@@ -27,6 +27,10 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
+
+  &.hidden {
+    overflow: hidden;
+  }
 }
 
 @media screen and (min-width: 1441px) {
@@ -66,7 +70,7 @@ address {
 }
 
 a {
-  text-decoration: none !important;
+  text-decoration: none;
   display: inline-block;
   transition: 0.3s;
 }
@@ -89,6 +93,8 @@ button {
   transition: 0.3s;
   background: none;
   border: none;
+  cursor: pointer;
+  outline: none;
 }
 
 table,

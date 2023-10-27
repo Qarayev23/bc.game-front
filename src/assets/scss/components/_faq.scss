@@ -3,8 +3,12 @@
 
     &--bg {
         background: $bg-gray;
-        padding-top: rem(80);
         margin-top: rem(80);
+        margin-left: rem(-80);
+        margin-right: rem(-80);
+        padding-left: rem(80);
+        padding-right: rem(80);
+        padding-top: rem(80);
 
         .faq__wrapper {
             margin-top: 0;
@@ -18,16 +22,28 @@
         margin-top: rem(40)
     }
 
-    &__title {
-        @include h-2;
-        color: white;
-        margin-bottom: rem(12);
+    h2 {
+        margin-bottom: rem(12) !important;
+        margin-top: 0 !important;
+    }
+
+    @include breakpoint-max($desktop-width) {
+        &--bg{
+            margin-left: rem(-40);
+            margin-right: rem(-40);
+            padding-left: rem(40);
+            padding-right: rem(40);
+        }
     }
 
     @include breakpoint-max($tablet-width) {
         &--bg {
             padding-top: rem(64);
             margin-top: rem(64);
+            margin-left: rem(-16);
+            margin-right: rem(-16);
+            padding-left: rem(16);
+            padding-right: rem(16);
         }
 
         padding-bottom: rem(44);
