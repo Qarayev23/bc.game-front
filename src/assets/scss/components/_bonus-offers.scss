@@ -52,13 +52,14 @@
             left: rem(-32);
             z-index: -1;
             width: rem(360);
-            height: rem(68)
+            height: 100%;
         }
 
         &__text {
             @include font(48, 700, 64);
             margin-bottom: rem(8);
             color: $bg-black;
+            padding: rem(2) 0;
         }
     }
 
@@ -167,6 +168,12 @@
         &-percentage {
             &__img {
                 width: calc(100% + rem(34));
+                object-fit: cover;
+                object-position: right;
+            }
+
+            &__text {
+                padding-right: rem(10);
             }
         }
     }
