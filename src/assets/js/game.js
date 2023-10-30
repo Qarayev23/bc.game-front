@@ -51,7 +51,7 @@ fullscreenBtn.addEventListener("click", () => {
         fullscreenElement.msRequestFullscreen();
     }
 
-    // screen.orientation.lock('landscape-primary');
+    screen.orientation.lock('landscape-primary');
 });
 
 // MINIMIZE
@@ -90,6 +90,10 @@ document.addEventListener('fullscreenchange', () => {
         fullscreenElement.classList.remove("fullscreen");
     }
 });
+
+screen.addEventListener("orientationchange", () => {
+    alert("Orientation changed");
+  });
 
 // RATING STAR
 const myRater = rater({
