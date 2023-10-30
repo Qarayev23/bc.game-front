@@ -92,16 +92,14 @@ document.addEventListener('fullscreenchange', () => {
 });
 
 window.addEventListener("orientationchange", () => {
-    if (screen.orientation.type === "portrait-primary") {
-        console.log("Cihaz dikey konumda.");
-        // Dikey konuma kilitle (isteğe bağlı)
-        screen.orientation.lock("portrait-primary").then(() => {
-            console.log("Cihaz dikey konumda kilitleme başarılı.");
-        }).catch((error) => {
-            console.error("Cihaz dikey konumda kilitleme başarısız oldu:", error);
-        });
-    }
+   alert("window.addEventListener(orientationchange)");
 });
+
+screen.orientation.addEventListener("change", function(e) {
+    alert("screen.orientation.addEventListener(change)");
+});
+
+screen.orientation.addEventListener("change", alert("screen.orientation.addEventListener(change)"));
 
 // RATING STAR
 const myRater = rater({
