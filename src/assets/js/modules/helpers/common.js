@@ -62,9 +62,9 @@ export function truncateFunction() {
   const toggleBtn = document.querySelector('.uncover-btn');
   const truncateEl = document.querySelector('.truncate');
   const truncateInnerEl = document.querySelector('.truncate__inner');
-  const truncateRect = truncateEl.getBoundingClientRect();
-  let truncateInnerRect = truncateInnerEl.getBoundingClientRect();
-  truncateEl.style.setProperty("--truncate-height", `${truncateRect.height}px`);
+  const truncateRect = truncateEl.offsetHeight;
+  let truncateInnerRect = truncateInnerEl.offsetHeight;
+  truncateEl.style.setProperty("--truncate-height", `${truncateRect}px`);
 
   toggleBtn.addEventListener('click', () => {
     toggleBtn.classList.toggle('rotate');
@@ -78,8 +78,8 @@ export function truncateFunction() {
   function open() {
     truncateEl.classList.remove('truncate--line-clamped');
     window.requestAnimationFrame(() => {
-      truncateInnerRect = truncateInnerEl.getBoundingClientRect();
-      truncateEl.style.setProperty("--truncate-height-expanded", `${truncateInnerRect.height}px`);
+      truncateInnerRect = truncateInnerEl.offsetHeight;
+      truncateEl.style.setProperty("--truncate-height-expanded", `${truncateInnerRect}px`);
       truncateEl.classList.add('truncate--expanded');
     });
   }
@@ -88,7 +88,7 @@ export function truncateFunction() {
     truncateEl.classList.remove('truncate--expanded');
     setTimeout(() => {
       truncateEl.classList.add('truncate--line-clamped');
-    }, 500);
+    }, 300);
   }
 }
 
@@ -104,7 +104,9 @@ export function accordionFunction() {
           accBtn[j].nextElementSibling.style.maxHeight = null;
         }
       }
-      this.classList.add("show");
+      if (!this.nextElementSibling.offsetHeight > 0) {
+        this.classList.add("show");
+      }
       const panel = this.nextElementSibling;
       if (panel.style.maxHeight) {
         panel.style.maxHeight = null;
