@@ -28,6 +28,8 @@ fullscreenBtn.addEventListener("click", () => {
     } else if (fullscreenElement.msRequestFullscreen) {
         fullscreenElement.msRequestFullscreen();
     }
+
+    screen.orientation.lock('landscape')
 });
 
 // MINIMIZE
@@ -41,6 +43,21 @@ minimizeBtn.addEventListener("click", () => {
         document.msExitFullscreen();
     }
 });
+
+// SHOW IFRAME OVERLAY
+const showIframeOverlay = (className) => {
+    if (fullscreenElement.classList.contains(className) && !JSON.parse(sessionStorage.getItem("isShowIframeOverlay")) && hasTouchScreen) {
+        sessionStorage.setItem("isShowIframeOverlay", "true");
+
+        setTimeout(() => {
+            document.querySelector(".iframe-box-overlay").classList.add("show");
+
+            setInterval(() => {
+                document.querySelector(".iframe-box-overlay").classList.remove("show");
+            }, 5000);
+        }, 5000);
+    }
+}
 
 // FULLSCREEN CHANGE
 document.addEventListener('fullscreenchange', () => {
@@ -67,21 +84,6 @@ if ("maxTouchPoints" in navigator) {
             /\b(BlackBerry|webOS|iPhone|IEMobile)\b/i.test(UA) ||
             /\b(Android|Windows Phone|iPad|iPod)\b/i.test(UA)
         );
-    }
-}
-
-// SHOW IFRAME OVERLAY
-const showIframeOverlay = (className) => {
-    if (fullscreenElement.classList.contains(className) && !JSON.parse(sessionStorage.getItem("isShowIframeOverlay")) && hasTouchScreen) {
-        sessionStorage.setItem("isShowIframeOverlay", "true");
-
-        setTimeout(() => {
-            document.querySelector(".iframe-box-overlay").classList.add("show");
-
-            setInterval(() => {
-                document.querySelector(".iframe-box-overlay").classList.remove("show");
-            }, 5000);
-        }, 5000);
     }
 }
 
