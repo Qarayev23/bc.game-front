@@ -37,16 +37,9 @@ demoBtn.addEventListener("click", () => {
     fullscreenElement.classList.add("active");
     // showIframeOverlay("fullscreen");
 });
-let isLandscape = true;
+
 // FULLSCREEN
 fullscreenBtn.addEventListener("click", () => {
-    // Cihazın konumunu kontrol et ve ona göre döndür
-    if (isLandscape) {
-        document.documentElement.style.transform = "rotate(90deg)";
-    } else {
-        document.documentElement.style.transform = "";
-    }
-
     fullscreenElement.classList.add("fullscreen");
     fullscreenElement.classList.add(`${hasTouchScreen ? "mobile" : ""}`);
     // showIframeOverlay("active");
@@ -57,6 +50,7 @@ fullscreenBtn.addEventListener("click", () => {
     } else if (fullscreenElement.msRequestFullscreen) {
         fullscreenElement.msRequestFullscreen();
     }
+    screen.orientation.lock("landscape-primary");
 });
 
 // MINIMIZE
@@ -71,7 +65,6 @@ minimizeBtn.addEventListener("click", () => {
         document.msExitFullscreen();
     }
 });
-
 
 // SHOW IFRAME OVERLAY
 // const showIframeOverlay = (className) => {
@@ -96,10 +89,12 @@ document.addEventListener('fullscreenchange', () => {
 });
 
 window.addEventListener("orientationchange", () => {
-    if (screen.orientation.type === "landscape-primary") {
-        isLandscape = true;
+    if (screen.orientation.type === "portrait-primary") {
+        // Cihaz dikey konumda, dikey kal
+        document.documentElement.style.transform = "";
     } else {
-        isLandscape = false;
+        // Cihaz yatay konumda, yatayda kal
+        document.documentElement.style.transform = "rotate(90deg)";
     }
 });
 
