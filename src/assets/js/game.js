@@ -89,9 +89,7 @@ document.addEventListener('fullscreenchange', () => {
 });
 
 window.addEventListener("orientationchange", () => {
-    if (screen.orientation.type === "portrait-primary") {
-        screen.orientation.lock("landscape-primary");
-    } else {
+    if (screen.orientation.lock("landscape-primary")) {
         screen.orientation.lock("portrait-primary");
     }
 });
