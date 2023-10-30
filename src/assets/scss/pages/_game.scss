@@ -226,13 +226,13 @@
             height: rem(300);
 
             &.fullscreen {
-                padding: 0;
+                padding: rem(40) 0;
 
                 .resize-btn {
                     &--minimize {
                         display: block;
                         bottom: rem(-30);
-                        right: rem(20);
+                        right: rem(10);
 
                         img {
                             width: rem(16);
