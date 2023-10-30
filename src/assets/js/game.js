@@ -91,15 +91,6 @@ document.addEventListener('fullscreenchange', () => {
     }
 });
 
-screen.orientation.addEventListener("change", (event) => {
-    const type = event.target.type;
-    if (type === "landscape-primary") {
-        screen.orientation.lock('portrait-primary');
-    } else if (type === "portrait-primary") {
-        screen.orientation.lock('landscape-primary');
-    }
-});
-
 // RATING STAR
 const myRater = rater({
     starSize: 19,
