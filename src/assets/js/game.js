@@ -52,7 +52,7 @@ fullscreenBtn.addEventListener("click", () => {
     }
 
     screen.orientation.lock('landscape-primary');
-});
+}, false);
 
 // MINIMIZE
 minimizeBtn.addEventListener("click", () => {
