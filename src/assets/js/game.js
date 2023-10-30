@@ -52,7 +52,7 @@ fullscreenBtn.addEventListener("click", () => {
     }
 
     screen.orientation.lock('landscape-primary');
-}, false);
+});
 
 // MINIMIZE
 minimizeBtn.addEventListener("click", () => {
@@ -91,9 +91,17 @@ document.addEventListener('fullscreenchange', () => {
     }
 });
 
-screen.addEventListener("orientationchange", () => {
-    alert("Orientation changed");
-  });
+window.addEventListener("orientationchange", () => {
+    if (screen.orientation.type === "portrait-primary") {
+        console.log("Cihaz dikey konumda.");
+        // Dikey konuma kilitle (isteğe bağlı)
+        screen.orientation.lock("portrait-primary").then(() => {
+            console.log("Cihaz dikey konumda kilitleme başarılı.");
+        }).catch((error) => {
+            console.error("Cihaz dikey konumda kilitleme başarısız oldu:", error);
+        });
+    }
+});
 
 // RATING STAR
 const myRater = rater({
