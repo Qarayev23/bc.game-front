@@ -64,6 +64,26 @@ minimizeBtn.addEventListener("click", () => {
     } else if (document.msExitFullscreen) {
         document.msExitFullscreen();
     }
+    screen.orientation.unlock();
+});
+
+// FULLSCREEN CHANGE
+document.addEventListener('fullscreenchange', () => {
+    if (!document.fullscreenElement) {
+        fullscreenElement.classList.remove("fullscreen");
+    }
+});
+
+// RATING STAR
+const myRater = rater({
+    starSize: 19,
+    rating: 4.5,
+    element: document.querySelector("#rater"),
+    rateCallback: function rateCallback(rating, done) {
+        console.log(rating);
+        this.setRating(rating);
+        done();
+    }
 });
 
 // SHOW IFRAME OVERLAY
@@ -80,31 +100,6 @@ minimizeBtn.addEventListener("click", () => {
 //         }, 5000);
 //     }
 // }
-
-// FULLSCREEN CHANGE
-document.addEventListener('fullscreenchange', () => {
-    if (!document.fullscreenElement) {
-        fullscreenElement.classList.remove("fullscreen");
-    }
-});
-
-window.addEventListener("orientationchange", () => {
-    if (screen.orientation.lock("landscape-primary")) {
-        screen.orientation.lock("portrait-primary");
-    }
-});
-
-// RATING STAR
-const myRater = rater({
-    starSize: 19,
-    rating: 4.5,
-    element: document.querySelector("#rater"),
-    rateCallback: function rateCallback(rating, done) {
-        console.log(rating);
-        this.setRating(rating);
-        done();
-    }
-});
 
 // TRUNCATE GAME DESCRIPTION TEXT
 truncateFunction()
