@@ -9,6 +9,27 @@ const demoBtn = document.getElementById("demo");
 const iframe = document.getElementById("iframe");
 const fullscreenElement = document.querySelector(".game-box");
 
+// MOBILE DEVICE DETECTION
+var hasTouchScreen = false;
+if ("maxTouchPoints" in navigator) {
+    hasTouchScreen = navigator.maxTouchPoints > 0;
+} else if ("msMaxTouchPoints" in navigator) {
+    hasTouchScreen = navigator.msMaxTouchPoints > 0;
+} else {
+    var mQ = window.matchMedia && matchMedia("(pointer:coarse)");
+    if (mQ && mQ.media === "(pointer:coarse)") {
+        hasTouchScreen = !!mQ.matches;
+    } else if ('orientation' in window) {
+        hasTouchScreen = true;
+    } else {
+        var UA = navigator.userAgent;
+        hasTouchScreen = (
+            /\b(BlackBerry|webOS|iPhone|IEMobile)\b/i.test(UA) ||
+            /\b(Android|Windows Phone|iPad|iPod)\b/i.test(UA)
+        );
+    }
+}
+
 // OPEN DEMO GAME
 demoBtn.addEventListener("click", () => {
     iframe.querySelector("iframe").src = "https://cw.playngonetwork.com/Casino/IframedView?pid=565&amp;gid=&amp;gameId=310&amp;lang=en_GB&amp;practice=1&amp;channel=desktop&amp;div=egamings_game_frame&amp;width=100%&amp;height=100%&amp;user=&amp;password=&amp;ctx=&amp;demo=2&amp;brand=&amp;lobby=&amp;rccurrentsessiontime=0&amp;rcintervaltime=0&amp;rcaccounthistoryurl=&amp;rccontinueurl=&amp;rcexiturl=&amp;rchistoryurlmode=&amp;autoplaylimits=0&amp;autoplayreset=0&amp;callback=&amp;rcmga=&amp;resourcelevel=0&amp;hasjackpots=False&amp;country=&amp;region=&amp;pauseplay=&amp;playlimit=&amp;selftest=&amp;sessiontime=&amp;coreweburl=https://cw.playngonetwork.com/&amp;showpoweredby=True"
@@ -20,6 +41,7 @@ demoBtn.addEventListener("click", () => {
 // FULLSCREEN
 fullscreenBtn.addEventListener("click", () => {
     fullscreenElement.classList.add("fullscreen");
+    fullscreenElement.classList.add(`${hasTouchScreen ? "mobile" : ""}`);
     // showIframeOverlay("active");
     if (fullscreenElement.requestFullscreen) {
         fullscreenElement.requestFullscreen();
@@ -29,12 +51,13 @@ fullscreenBtn.addEventListener("click", () => {
         fullscreenElement.msRequestFullscreen();
     }
 
-    screen.orientation.lock('landscape')
+    screen.orientation.lock('landscape');
 });
 
 // MINIMIZE
 minimizeBtn.addEventListener("click", () => {
     fullscreenElement.classList.remove("fullscreen");
+    fullscreenElement.classList.remove("mobile");
     if (document.exitFullscreen) {
         document.exitFullscreen();
     } else if (document.webkitExitFullscreen) {
@@ -42,7 +65,9 @@ minimizeBtn.addEventListener("click", () => {
     } else if (document.msExitFullscreen) {
         document.msExitFullscreen();
     }
+    screen.orientation.unlock();
 });
+
 
 // SHOW IFRAME OVERLAY
 // const showIframeOverlay = (className) => {
@@ -66,26 +91,15 @@ document.addEventListener('fullscreenchange', () => {
     }
 });
 
-// MOBILE DEVICE DETECTION
-var hasTouchScreen = false;
-if ("maxTouchPoints" in navigator) {
-    hasTouchScreen = navigator.maxTouchPoints > 0;
-} else if ("msMaxTouchPoints" in navigator) {
-    hasTouchScreen = navigator.msMaxTouchPoints > 0;
-} else {
-    var mQ = window.matchMedia && matchMedia("(pointer:coarse)");
-    if (mQ && mQ.media === "(pointer:coarse)") {
-        hasTouchScreen = !!mQ.matches;
-    } else if ('orientation' in window) {
-        hasTouchScreen = true;
+screen.orientation.addEventListener("change", (event) => {
+    const type = event.target.type;
+
+    if (type === "landscape-primary") {
+        screen.orientation.lock('landscape');
     } else {
-        var UA = navigator.userAgent;
-        hasTouchScreen = (
-            /\b(BlackBerry|webOS|iPhone|IEMobile)\b/i.test(UA) ||
-            /\b(Android|Windows Phone|iPad|iPod)\b/i.test(UA)
-        );
+        screen.orientation.lock('portrait');
     }
-}
+  });
 
 // RATING STAR
 const myRater = rater({

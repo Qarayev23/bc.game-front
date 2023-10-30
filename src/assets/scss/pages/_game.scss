@@ -156,6 +156,20 @@
         &.fullscreen {
             padding: rem(70) 0;
 
+            &.mobile {
+                padding: rem(40) 0 !important;
+
+                .resize-btn {
+                    &--minimize {
+                        bottom: rem(-27);
+                        img {
+                            width: rem(16);
+                            height: rem(16);
+                        }
+                    }
+                }
+            }
+
             .game-box {
                 &__wrapper {
                     padding: 0;
