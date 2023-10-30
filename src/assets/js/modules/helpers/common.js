@@ -77,11 +77,41 @@ export function truncateFunction() {
 
   function open() {
     truncateEl.classList.remove('truncate--line-clamped');
-    window.requestAnimationFrame(() => {
-      truncateInnerRect = truncateInnerEl.offsetHeight;
-      truncateEl.style.setProperty("--truncate-height-expanded", `${truncateInnerRect}px`);
-      truncateEl.classList.add('truncate--expanded');
-    });
+    if (window.requestAnimationFrame) {
+      window.requestAnimationFrame(() => {
+        truncateInnerRect = truncateInnerEl.offsetHeight;
+        truncateEl.style.setProperty("--truncate-height-expanded", `${truncateInnerRect}px`);
+        truncateEl.classList.add('truncate--expanded');
+      });
+    }
+    else if (window.webkitRequestAnimationFrame) {
+      window.webkitRequestAnimationFrame(() => {
+        truncateInnerRect = truncateInnerEl.offsetHeight;
+        truncateEl.style.setProperty("--truncate-height-expanded", `${truncateInnerRect}px`);
+        truncateEl.classList.add('truncate--expanded');
+      });
+    }
+    else if (window.mozRequestAnimationFrame) {
+      window.mozRequestAnimationFrame(() => {
+        truncateInnerRect = truncateInnerEl.offsetHeight;
+        truncateEl.style.setProperty("--truncate-height-expanded", `${truncateInnerRect}px`);
+        truncateEl.classList.add('truncate--expanded');
+      });
+    }
+    else if (window.oRequestAnimationFrame) {
+      window.oRequestAnimationFrame(() => {
+        truncateInnerRect = truncateInnerEl.offsetHeight;
+        truncateEl.style.setProperty("--truncate-height-expanded", `${truncateInnerRect}px`);
+        truncateEl.classList.add('truncate--expanded');
+      });
+    }
+    else if (window.msRequestAnimationFrame) {
+      window.msRequestAnimationFrame(() => {
+        truncateInnerRect = truncateInnerEl.offsetHeight;
+        truncateEl.style.setProperty("--truncate-height-expanded", `${truncateInnerRect}px`);
+        truncateEl.classList.add('truncate--expanded');
+      });
+    }
   }
 
   function close() {
