@@ -95,11 +95,10 @@ window.addEventListener("orientationchange", () => {
    alert("window.addEventListener(orientationchange)");
 });
 
-screen.orientation.addEventListener("change", function(e) {
-    alert("screen.orientation.addEventListener(change)");
-});
+// screen.orientation.addEventListener("change", function(e) {
+//     alert("screen.orientation.addEventListener(change)");
+// });
 
-screen.orientation.addEventListener("change", alert("screen.orientation.addEventListener(change)"));
 
 // RATING STAR
 const myRater = rater({
