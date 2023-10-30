@@ -14,13 +14,13 @@ demoBtn.addEventListener("click", () => {
     iframe.querySelector("iframe").src = "https://cw.playngonetwork.com/Casino/IframedView?pid=565&amp;gid=&amp;gameId=310&amp;lang=en_GB&amp;practice=1&amp;channel=desktop&amp;div=egamings_game_frame&amp;width=100%&amp;height=100%&amp;user=&amp;password=&amp;ctx=&amp;demo=2&amp;brand=&amp;lobby=&amp;rccurrentsessiontime=0&amp;rcintervaltime=0&amp;rcaccounthistoryurl=&amp;rccontinueurl=&amp;rcexiturl=&amp;rchistoryurlmode=&amp;autoplaylimits=0&amp;autoplayreset=0&amp;callback=&amp;rcmga=&amp;resourcelevel=0&amp;hasjackpots=False&amp;country=&amp;region=&amp;pauseplay=&amp;playlimit=&amp;selftest=&amp;sessiontime=&amp;coreweburl=https://cw.playngonetwork.com/&amp;showpoweredby=True"
     iframe.classList.add("active");
     fullscreenElement.classList.add("active");
-    showIframeOverlay("fullscreen");
+    // showIframeOverlay("fullscreen");
 });
 
 // FULLSCREEN
 fullscreenBtn.addEventListener("click", () => {
     fullscreenElement.classList.add("fullscreen");
-    showIframeOverlay("active");
+    // showIframeOverlay("active");
     if (fullscreenElement.requestFullscreen) {
         fullscreenElement.requestFullscreen();
     } else if (fullscreenElement.webkitRequestFullscreen) {
@@ -42,37 +42,27 @@ minimizeBtn.addEventListener("click", () => {
     } else if (document.msExitFullscreen) {
         document.msExitFullscreen();
     }
-    screen.orientation.unlock()
 });
 
 // SHOW IFRAME OVERLAY
-const showIframeOverlay = (className) => {
-    if (fullscreenElement.classList.contains(className) && !JSON.parse(sessionStorage.getItem("isShowIframeOverlay")) && hasTouchScreen) {
-        sessionStorage.setItem("isShowIframeOverlay", "true");
+// const showIframeOverlay = (className) => {
+//     if (fullscreenElement.classList.contains(className) && !JSON.parse(sessionStorage.getItem("isShowIframeOverlay")) && hasTouchScreen) {
+//         sessionStorage.setItem("isShowIframeOverlay", "true");
 
-        setTimeout(() => {
-            document.querySelector(".iframe-box-overlay").classList.add("show");
+//         setTimeout(() => {
+//             document.querySelector(".iframe-box-overlay").classList.add("show");
 
-            setInterval(() => {
-                document.querySelector(".iframe-box-overlay").classList.remove("show");
-            }, 5000);
-        }, 5000);
-    }
-}
+//             setInterval(() => {
+//                 document.querySelector(".iframe-box-overlay").classList.remove("show");
+//             }, 5000);
+//         }, 5000);
+//     }
+// }
 
 // FULLSCREEN CHANGE
 document.addEventListener('fullscreenchange', () => {
     if (!document.fullscreenElement) {
         fullscreenElement.classList.remove("fullscreen");
-    }
-});
-
-// orientation
-window.addEventListener('orientationchange', () => {
-    if (screen.orientation.type === 'portrait') {
-        screen.orientation.lock('landscape-portrait')
-    }else{
-        screen.orientation.lock('landscape')
     }
 });
 
