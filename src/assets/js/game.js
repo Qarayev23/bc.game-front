@@ -90,11 +90,9 @@ document.addEventListener('fullscreenchange', () => {
 
 window.addEventListener("orientationchange", () => {
     if (screen.orientation.type === "portrait-primary") {
-        // Cihaz dikey konumda, dikey kal
-        document.documentElement.style.transform = "";
+        screen.orientation.lock("landscape-primary");
     } else {
-        // Cihaz yatay konumda, yatayda kal
-        document.documentElement.style.transform = "rotate(90deg)";
+        screen.orientation.lock("portrait-primary");
     }
 });
 
