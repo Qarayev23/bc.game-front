@@ -88,7 +88,7 @@ export function truncateFunction() {
     truncateEl.classList.remove('truncate--expanded');
     setTimeout(() => {
       truncateEl.classList.add('truncate--line-clamped');
-    }, 300);
+    }, 500);
   }
 }
 

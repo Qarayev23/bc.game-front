@@ -9,6 +9,12 @@
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  scroll-behavior: smooth;
+  scroll-margin-top: rem(100);
+
+  @include breakpoint-max($tablet-width) {
+    scroll-margin-top: rem(80);
+  }
 
   *:focus {
     outline: none;
