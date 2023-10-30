@@ -51,7 +51,7 @@ fullscreenBtn.addEventListener("click", () => {
         fullscreenElement.msRequestFullscreen();
     }
 
-    screen.orientation.lock('landscape-primary');
+    // screen.orientation.lock('landscape-primary');
 });
 
 // MINIMIZE
@@ -92,12 +92,14 @@ document.addEventListener('fullscreenchange', () => {
 });
 
 window.addEventListener("orientationchange", () => {
-   alert("window.addEventListener(orientationchange)");
+    if (screen.orientation.type === "portrait-primary") {
+        // Cihaz dikey konumda, dikey kal
+        document.documentElement.style.transform = "";
+    } else {
+        // Cihaz yatay konumda, yatayda kal
+        document.documentElement.style.transform = "rotate(90deg)";
+    }
 });
-
-// screen.orientation.addEventListener("change", function(e) {
-//     alert("screen.orientation.addEventListener(change)");
-// });
 
 
 // RATING STAR
