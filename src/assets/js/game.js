@@ -51,7 +51,7 @@ fullscreenBtn.addEventListener("click", () => {
         fullscreenElement.msRequestFullscreen();
     }
 
-    // screen.orientation.lock('landscape-primary');
+    document.documentElement.style.transform = "rotate(90deg)";
 });
 
 // MINIMIZE
@@ -65,7 +65,6 @@ minimizeBtn.addEventListener("click", () => {
     } else if (document.msExitFullscreen) {
         document.msExitFullscreen();
     }
-    // screen.orientation.unlock();
 });
 
 
