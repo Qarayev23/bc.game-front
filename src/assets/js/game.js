@@ -41,7 +41,7 @@ demoBtn.addEventListener("click", () => {
 // FULLSCREEN
 fullscreenBtn.addEventListener("click", () => {
     fullscreenElement.classList.add("fullscreen");
-    fullscreenElement.classList.add(`${hasTouchScreen ? "mobile" : ""}`);
+    fullscreenElement.classList.add(`${hasTouchScreen ? "mobile" : "desktop"}`);
     // showIframeOverlay("active");
     if (fullscreenElement.requestFullscreen) {
         fullscreenElement.requestFullscreen();
