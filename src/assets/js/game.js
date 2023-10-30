@@ -37,7 +37,7 @@ demoBtn.addEventListener("click", () => {
     fullscreenElement.classList.add("active");
     // showIframeOverlay("fullscreen");
 });
-
+let isLandscape = true;
 // FULLSCREEN
 fullscreenBtn.addEventListener("click", () => {
     fullscreenElement.classList.add("fullscreen");
@@ -51,7 +51,13 @@ fullscreenBtn.addEventListener("click", () => {
         fullscreenElement.msRequestFullscreen();
     }
 
-    document.documentElement.style.transform = "rotate(90deg)";
+    if (isLandscape) {
+        document.documentElement.style.transform = "rotate(90deg)";
+        isLandscape = false;
+    } else {
+        document.documentElement.style.transform = ""; // Dikey konumdaysa, yatay konuma döndürme.
+        isLandscape = true;
+    }
 });
 
 // MINIMIZE
@@ -99,7 +105,6 @@ window.addEventListener("orientationchange", () => {
         document.documentElement.style.transform = "rotate(90deg)";
     }
 });
-
 
 // RATING STAR
 const myRater = rater({
