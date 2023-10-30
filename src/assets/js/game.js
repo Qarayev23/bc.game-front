@@ -42,6 +42,7 @@ minimizeBtn.addEventListener("click", () => {
     } else if (document.msExitFullscreen) {
         document.msExitFullscreen();
     }
+    screen.orientation.unlock()
 });
 
 // SHOW IFRAME OVERLAY
@@ -63,6 +64,15 @@ const showIframeOverlay = (className) => {
 document.addEventListener('fullscreenchange', () => {
     if (!document.fullscreenElement) {
         fullscreenElement.classList.remove("fullscreen");
+    }
+});
+
+// orientation
+window.addEventListener('orientationchange', () => {
+    if (screen.orientation.type === 'portrait') {
+        screen.orientation.lock('landscape-portrait')
+    }else{
+        screen.orientation.lock('landscape')
     }
 });
 

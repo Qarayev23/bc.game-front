@@ -226,27 +226,32 @@
             height: rem(300);
 
             &.fullscreen {
-                padding: rem(60) 0;
+                padding: rem(20) 0;
 
                 .resize-btn {
                     &--minimize {
                         display: block;
                         bottom: rem(-30);
                         right: rem(20);
+
+                        img {
+                            width: rem(16);
+                            height: rem(16);
+                        }
                     }
                 }
             }
 
             .resize-btn {
-                img {
-                    width: rem(18);
-                    height: rem(18);
-                }
-
                 &--fullscreen {
                     display: block;
                     right: rem(15);
                     bottom: rem(15);
+
+                    img {
+                        width: rem(18);
+                        height: rem(18);
+                    }
                 }
             }
         }
