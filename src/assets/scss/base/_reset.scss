@@ -10,11 +10,6 @@
   padding: 0;
   vertical-align: baseline;
   scroll-behavior: smooth;
-  scroll-margin-top: rem(100);
-
-  @include breakpoint-max($tablet-width) {
-    scroll-margin-top: rem(80);
-  }
 
   *:focus {
     outline: none;
@@ -119,4 +114,12 @@ table tfoot tr,
   border-collapse: collapse;
   border-spacing: 0;
   background-image: none;
+}
+
+.section {
+  scroll-margin-top: rem(100);
+
+  @include breakpoint-max($tablet-width) {
+    scroll-margin-top: rem(80);
+  }
 }
