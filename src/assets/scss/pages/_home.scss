@@ -184,7 +184,7 @@
 
     @include breakpoint-max($tablet-width) {
         margin-bottom: rem(64);
-        
+
         &__footer {
             flex-direction: column;
             margin-top: rem(24);

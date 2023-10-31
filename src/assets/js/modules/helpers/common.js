@@ -59,67 +59,13 @@ export function isWebp() {
 }
 
 export function truncateFunction() {
-  const toggleBtn = document.querySelector('.uncover-btn');
-  const truncateEl = document.querySelector('.truncate');
-  const truncateInnerEl = document.querySelector('.truncate__inner');
-  const truncateRect = truncateEl.offsetHeight;
-  let truncateInnerRect = truncateInnerEl.offsetHeight;
-  truncateEl.style.setProperty("--truncate-height", `${truncateRect}px`);
-
-  toggleBtn.addEventListener('click', () => {
-    toggleBtn.classList.toggle('rotate');
-    if (truncateEl.classList.contains('truncate--expanded')) {
-      close();
-    } else {
-      open();
-    }
+  const truncate = document.querySelector('.truncate');
+  let isOpen = false;
+  document.querySelector('.uncover-btn').addEventListener('click', function () {
+    isOpen = !isOpen;
+    isOpen ? truncate.classList.add('open') : truncate.classList.remove('open')
+    this.classList.toggle('rotate')
   });
-
-  function open() {
-    truncateEl.classList.remove('truncate--line-clamped');
-    if (window.requestAnimationFrame) {
-      window.requestAnimationFrame(() => {
-        truncateInnerRect = truncateInnerEl.offsetHeight;
-        truncateEl.style.setProperty("--truncate-height-expanded", `${truncateInnerRect}px`);
-        truncateEl.classList.add('truncate--expanded');
-      });
-    }
-    else if (window.webkitRequestAnimationFrame) {
-      window.webkitRequestAnimationFrame(() => {
-        truncateInnerRect = truncateInnerEl.offsetHeight;
-        truncateEl.style.setProperty("--truncate-height-expanded", `${truncateInnerRect}px`);
-        truncateEl.classList.add('truncate--expanded');
-      });
-    }
-    else if (window.mozRequestAnimationFrame) {
-      window.mozRequestAnimationFrame(() => {
-        truncateInnerRect = truncateInnerEl.offsetHeight;
-        truncateEl.style.setProperty("--truncate-height-expanded", `${truncateInnerRect}px`);
-        truncateEl.classList.add('truncate--expanded');
-      });
-    }
-    else if (window.oRequestAnimationFrame) {
-      window.oRequestAnimationFrame(() => {
-        truncateInnerRect = truncateInnerEl.offsetHeight;
-        truncateEl.style.setProperty("--truncate-height-expanded", `${truncateInnerRect}px`);
-        truncateEl.classList.add('truncate--expanded');
-      });
-    }
-    else if (window.msRequestAnimationFrame) {
-      window.msRequestAnimationFrame(() => {
-        truncateInnerRect = truncateInnerEl.offsetHeight;
-        truncateEl.style.setProperty("--truncate-height-expanded", `${truncateInnerRect}px`);
-        truncateEl.classList.add('truncate--expanded');
-      });
-    }
-  }
-
-  function close() {
-    truncateEl.classList.remove('truncate--expanded');
-    setTimeout(() => {
-      truncateEl.classList.add('truncate--line-clamped');
-    }, 300);
-  }
 }
 
 export function accordionFunction() {

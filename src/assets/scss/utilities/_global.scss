@@ -27,20 +27,51 @@
     }
 }
 
-.truncate {
-    @include breakpoint-max($mobile-width) {
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        max-height: var(--truncate-height, auto);
+@include breakpoint-max($mobile-width) {
+    .truncate {
+        max-height: rem(72);
         overflow: hidden;
-        transition: max-height 0.3s ease;
+        transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
 
-        &--line-clamped {
-            -webkit-line-clamp: 3;
+        &.open {
+            max-height: 100rem;
+            transition: max-height 0.3s cubic-bezier(0.9, 0, 0.8, 0.2);
+
+            p {
+                animation: open 0.1s linear 0s forwards;
+            }
         }
 
-        &--expanded {
-            max-height: var(--truncate-height-expanded, auto);
+        @keyframes open {
+            from {
+                line-clamp: 3;
+                -webkit-line-clamp: 3;
+            }
+
+            to {
+                line-clamp: initial;
+                -webkit-line-clamp: initial;
+            }
+        }
+
+        @keyframes close {
+            from {
+                line-clamp: initial;
+                -webkit-line-clamp: initial;
+            }
+
+            to {
+                line-clamp: 3;
+                -webkit-line-clamp: 3;
+            }
+        }
+
+        p {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            animation: close 0.1s linear 0.1s forwards;
         }
     }
 }
